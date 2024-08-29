@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.reveal {
+  opacity: 0;
+  transition: 3s all ease;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+@layer utilities {
+  @keyframes scrollLeft {
+    to {
+      left: -32px;
+    }
+  }
+
+  .animate-scroll-left {
+    animation-name: scrollLeft;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+p {
+  font-size: clamp(1rem, 1vw, 1.25rem);
+}
