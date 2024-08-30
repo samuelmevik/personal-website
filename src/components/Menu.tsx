@@ -18,7 +18,7 @@ function Menu() {
   return (
     <div className={'z-50 text-white translate-y-[calc(50%-4rem)] dark:text-black fixed mx-auto bottom-0 left-0 right-0 size-[20rem]'}>
       <div className="grid place-items-center h-full">
-        <button onClick={toggleMenu} className={`z-50 peer size-[max(4vmin,4rem)] bg-black dark:bg-white p-1 rounded-full transition-transform duration-1000 ${open && "rotate-[315deg]"}`}>
+        <button onClick={toggleMenu} className={`z-50 peer size-[max(4vmin,4rem)] bg-black dark:bg-white p-1 rounded-full transition-transform duration-1000 ${open && "rotate-[315deg]"}`} aria-label="Toggle Menu">
           <LuPlus className="w-full h-full" />
         </button>
         <NavItem href="home" icon={<FaHome />} open={open} order={0} quantity={quantity} degree={degree}  />
