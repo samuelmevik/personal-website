@@ -4,8 +4,8 @@ import Experience from "./ui/Experience";
 import GithubLink from "./ui/GithubLink";
 import LetterGroup from "./ui/text/LetterGroup";
 import SentenceGroup from "./ui/text/SentenceGroup";
-import personalWebsite from "../assets/projects/personal-website.png"
-import patternMatcher from "../assets/projects/pattern-matcher.png"
+import personalWebsite from "../assets/projects/personal-website.webp"
+import patternMatcher from "../assets/projects/pattern-matcher.webp"
 import PageWrapper from "./PageWrapper";
 import { SiTypescript, SiVite } from "react-icons/si";
 import { FaReact } from "react-icons/fa";

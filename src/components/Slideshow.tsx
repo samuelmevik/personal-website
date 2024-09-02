@@ -1,15 +1,15 @@
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import spain from "../assets/spain/spain.jpg";
-import sky from "../assets/sky.jpg";
-import gymnasium from "../assets/gymnasium.jpg";
-import cheeta from "../assets/south-africa/cheeta.jpg";
-import cheeta1 from "../assets/south-africa/cheeta1.jpg"
-import flowerSouthAfrica from "../assets/south-africa/flower.jpg";
-import chameleon from "../assets/madagaskar/chameleon.jpg";
-import crocodile from "../assets/madagaskar/crocodile.jpg";
-import flower from "../assets/madagaskar/flower.jpg";
-import snorkling from "../assets/madagaskar/snorkling.jpg";
+import spain from "../assets/spain/spain.webp";
+import sky from "../assets/sky.webp";
+import gymnasium from "../assets/gymnasium.webp";
+import cheeta from "../assets/south-africa/cheeta.webp";
+import cheeta1 from "../assets/south-africa/cheeta1.webp"
+import flowerSouthAfrica from "../assets/south-africa/flower.webp";
+import chameleon from "../assets/madagaskar/chameleon.webp";
+import crocodile from "../assets/madagaskar/crocodile.webp";
+import flower from "../assets/madagaskar/flower.webp";
+import snorkling from "../assets/madagaskar/snorkling.webp";
 
 
 function Slideshow({ className }: { className?: string }) {
