@@ -1,10 +1,10 @@
 import PageWrapper from "./PageWrapper";
 import LetterGroup from "./ui/text/LetterGroup";
 import SentenceGroup from "./ui/text/SentenceGroup";
-import TiltBox from "./ui/TiltBox";
-import profile from "../assets/Profile.png"
+import profile from "../assets/profile.jpg"
 import PageTitle from "./ui/PageTitle";
 import Grid from "./ui/Grid";
+import Experience from "./ui/Experience";
 
 
 
@@ -27,22 +27,22 @@ function AboutMe() {
           </LetterGroup>
         </SentenceGroup>
       </PageTitle>
+      <Grid className="flex-1 sm:grid-cols-2">
+        <Grid.Center className="sm:order-1">
+          <Grid.Item positionX="right" positionY="up" className="relative aspect-square sm:aspect-square">
+            <div className="overflow-hidden size-full absolute top-0 animate-blob bg-transparent">
+              <img src={profile} alt="Me in nature" className="scale-x-[-1] object-cover w-full" />
+            </div>
+          </Grid.Item>
+        </Grid.Center>
 
-      <Grid className="flex-1">
-        <Grid.Row className="flex-col-reverse">
-          <Grid.Item className="grid place-items-center">
-            <TiltBox hoverGrow>
-              <p><span className="font-bold">Hello!</span> I'm a software developer based in Kalmar. I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
-              <br />
-              <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p>
-            </TiltBox>
+        <Grid.Center>
+          <Grid.Item positionX="left" positionY="down" className="aspect-square sm:aspect-square">
+            <Experience title="Hello!">
+              <p>I'm a software developer based in Kalmar. I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
+              <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p></Experience>
           </Grid.Item>
-          <Grid.Item position="up">
-            <TiltBox hoverGrow>
-              <img src={profile} alt="Me in nature" className="scale-x-[-1]" />
-            </TiltBox>
-          </Grid.Item>
-        </Grid.Row>
+        </Grid.Center>
       </Grid>
     </PageWrapper >
   )
