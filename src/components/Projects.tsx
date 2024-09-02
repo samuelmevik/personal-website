@@ -4,7 +4,6 @@ import Experience from "./ui/Experience";
 import GithubLink from "./ui/GithubLink";
 import LetterGroup from "./ui/text/LetterGroup";
 import SentenceGroup from "./ui/text/SentenceGroup";
-import TiltBox from "./ui/TiltBox";
 import personalWebsite from "../assets/projects/personal-website.png"
 import patternMatcher from "../assets/projects/pattern-matcher.png"
 import PageWrapper from "./PageWrapper";
@@ -34,49 +33,49 @@ function Projects() {
         </SentenceGroup>
       </PageTitle>
 
-      <Grid className="flex-1">
-        <Grid.Row className="flex-col-reverse">
-          <Grid.Item position="down">
-            <TiltBox className="relative" hoverGrow>
-              <img className="aspect-video ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
-              <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
-              <Experience title="Pattern Matcher"  ><p>There are limited ways in Javascript to match expressions with the exception of strings. The switch is severely limiting. To avoid accidental fallthrough an explicit break is required in each case and the only comparison that it can do is ===. This library aim is to solve these problems by providing a declarative version of the if and switch conditionals. Where the shape of the shape of the data is described by "patterns".</p></Experience>
-            </TiltBox>
+      <Grid className="flex-1 min-h-[90svh] sm:grid-cols-2">
+        <Grid.Center>
+          <Grid.Item positionX="left" positionY="up" className="relative">
+            <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
+            <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+            <Experience title="Pattern Matcher"  ><p>There are limited ways in Javascript to match expressions with the exception of strings. The switch is severely limiting. To avoid accidental fallthrough an explicit break is required in each case and the only comparison that it can do is ===. This library aim is to solve these problems by providing a declarative version of the if and switch conditionals. Where the shape of the shape of the data is described by "patterns".</p></Experience>
           </Grid.Item>
-          <Grid.Item position="up">
-            <TiltBox className="relative" hoverGrow>
-              <img className="aspect-video ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" />
-              <GithubLink link="https://github.com/" direction="top-left" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
-              <Wrapper>
-                <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
-                  <SiTypescript className="size-8" />
-                </SlideItem>
-                <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 2) * -1)" } }}>
-                  <FaReact className="size-8" />
-                </SlideItem>
-                <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 3) * -1)" } }}>
-                  <RiTailwindCssFill className="size-8" />
-                </SlideItem>
-                <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 4) * -1)" } }}>
-                  <SiVite className="size-8" />
-                </SlideItem>
-              </Wrapper>
-              <Experience title="Personal Website"  ><p>My personal website, to showcase a bit about myself!</p></Experience>
-            </TiltBox>
+        </Grid.Center>
+        <Grid.Center>
+          <Grid.Item positionX="right" positionY="down" className="relative">
+            <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" />
+            <GithubLink link="https://github.com/" direction="top-left" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+            <Wrapper>
+              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
+                <SiTypescript className="size-8" />
+              </SlideItem>
+              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 2) * -1)" } }}>
+                <FaReact className="size-8" />
+              </SlideItem>
+              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 3) * -1)" } }}>
+                <RiTailwindCssFill className="size-8" />
+              </SlideItem>
+              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 4) * -1)" } }}>
+                <SiVite className="size-8" />
+              </SlideItem>
+            </Wrapper>
+            <Experience title="Personal Website"  ><p>My personal website, to showcase a bit about myself!</p></Experience>
           </Grid.Item>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Item position="up">
-            <TiltBox hoverGrow>
-              <div className="aspect-video ring-2 dark:ring-white ring-black" />
-              <Experience title="Coming Soon..."  ><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vel saepe dignissimos dicta perferendis mollitia numquam neque nihil, corrupti quas.</p></Experience>
-            </TiltBox>
+        </Grid.Center>
+      </Grid>
+      <Grid className="min-h-[45svh]">
+        <Grid.Center>
+          <Grid.Item>
+            <div className="aspect-video ring-2 dark:ring-white ring-black" />
+            <Experience title="Coming Soon..."  ><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vel saepe dignissimos dicta perferendis mollitia numquam neque nihil, corrupti quas.</p></Experience>
           </Grid.Item>
-        </Grid.Row>
+        </Grid.Center>
       </Grid>
     </PageWrapper>
   );
 }
+
+
 
 
 function SlideItem({ children, className, props }: { children?: React.ReactNode, className?: string, props: React.HTMLProps<HTMLDivElement> }) {
