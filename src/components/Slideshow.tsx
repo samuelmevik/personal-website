@@ -1,15 +1,15 @@
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import spain from "../assets/spain/spain.webp";
-import sky from "../assets/sky.webp";
-import gymnasium from "../assets/gymnasium.webp";
-import cheeta from "../assets/south-africa/cheeta.webp";
-import cheeta1 from "../assets/south-africa/cheeta1.webp"
-import flowerSouthAfrica from "../assets/south-africa/flower.webp";
-import chameleon from "../assets/madagaskar/chameleon.webp";
-import crocodile from "../assets/madagaskar/crocodile.webp";
-import flower from "../assets/madagaskar/flower.webp";
-import snorkling from "../assets/madagaskar/snorkling.webp";
+import spain from "../assets/spain-large.jpg";
+import sky from "../assets/sky-large.jpg";
+import gymnasium from "../assets/gymnasium-large.jpg";
+import cheeta from "../assets/cheeta-large.jpg";
+import cheeta1 from "../assets/cheeta1-large.jpg";
+import flowerSouthAfrica from "../assets/flower-large.jpg";
+import chameleon from "../assets/chameleon-large.jpg"
+import crocodile from "../assets/crocodile-large.jpg";
+import flower from "../assets/flower1-large.jpg";
+import snorkling from "../assets/snorkling-large.jpg";
 
 
 function Slideshow({ className }: { className?: string }) {
@@ -37,6 +37,8 @@ function Slideshow({ className }: { className?: string }) {
     onMouseUp();
   }
 
+  const images = track.current?.querySelectorAll("img") || [];
+
   function handlePointerMove(clientX: number) {
     if (mouseDownAt === 0 || !track.current) return;
 
@@ -56,8 +58,6 @@ function Slideshow({ className }: { className?: string }) {
     );
 
     setSlide(nextPercentage);
-
-    const images = track.current.querySelectorAll("img");
 
     images.forEach((image) => {
       image.animate(
@@ -156,6 +156,77 @@ function Slideshow({ className }: { className?: string }) {
         alt="Snorkling"
         loading="lazy"
       />
+      {/* 
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={sky}
+        draggable="false"
+        alt="Sky"
+      />
+
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={gymnasium}
+        draggable="false"
+        alt="Gymnasium"
+      />
+
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={cheeta}
+        draggable="false"
+        alt="Cheeta"
+        loading="lazy"
+      />
+
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={cheeta1}
+        draggable="false"
+        alt="Cheeta"
+        loading="lazy"
+      />
+
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={flowerSouthAfrica}
+        draggable="false"
+        alt="Flower"
+        loading="lazy"
+      />
+
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={chameleon}
+        draggable="false"
+        alt="Chameleon"
+        loading="lazy"
+      />
+
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={crocodile}
+        draggable="false"
+        alt="Crocodile"
+        loading="lazy"
+      />
+
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={flower}
+        draggable="false"
+        alt="Flower"
+        loading="lazy"
+      />
+
+      <img
+        style={{ objectPosition: "100% center" }}
+        src={snorkling}
+        draggable="false"
+        alt="Snorkling"
+        loading="lazy"
+      />
+      */}
 
     </div>
   </div>
