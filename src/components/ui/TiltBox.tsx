@@ -1,12 +1,11 @@
 import { createRef, useEffect, useState } from "react"
 import { twMerge } from "tailwind-merge"
 
-function TiltBox({ children, className, hoverGrow }: { children: React.ReactNode, className?: string, hoverGrow?: boolean }) {
+function TiltBox({ children, className, hoverGrow, degree = 10 }: { children: React.ReactNode, className?: string, hoverGrow?: boolean, degree?: number }) {
   const ref = createRef<HTMLDivElement>()
 
   const [xTilt, setXTilt] = useState(0)
   const [yTilt, setYTilt] = useState(0)
-  const degree = 10
 
 
   useEffect(() => {
