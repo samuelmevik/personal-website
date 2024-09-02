@@ -23,7 +23,7 @@ function Menu() {
         </button>
         <NavItem href="home" icon={<FaHome />} open={open} order={0} quantity={quantity} degree={degree} />
         <NavItem href="me" icon={<IoMdPerson />} open={open} order={1} quantity={quantity} degree={degree} />
-        <NavItem href="snippets" icon={<FaCamera />} open={open} order={2} quantity={quantity} degree={degree} />
+        <NavItem href="album" icon={<FaCamera />} open={open} order={2} quantity={quantity} degree={degree} />
         <NavItem href="work" icon={<GrWorkshop />} open={open} order={3} quantity={quantity} degree={degree} />
         <NavItem href="education" icon={<FaFilePen />} open={open} order={4} quantity={quantity} degree={degree} />
         <NavItem href="projects" icon={<FaCode />} open={open} order={5} quantity={quantity} degree={degree} />

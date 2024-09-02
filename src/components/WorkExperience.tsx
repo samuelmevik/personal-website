@@ -7,19 +7,27 @@ import Grid from "./ui/Grid";
 
 function WorkExperience() {
   return <PageWrapper id="work" className="flex flex-col">
-    <PageTitle preTitle="My Work">
+    <PageTitle preTitle="From">
       <SentenceGroup className="inline-flex w-fit flex-wrap">
         <LetterGroup>
-          <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">E</span>
-          <span className="group-hover/sentence:translate-x-[-40%] group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-6deg] transform">x</span>
-          <span className="group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg] transform">p</span>
-          <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg] transform">e</span>
-          <span className="group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-3deg] transform">r</span>
-          <span className="group-hover/sentence:translate-y-[-5%] group-hover/sentence:rotate-[-5deg] transform">i</span>
-          <span className="group-hover/sentence:translate-y-[-15%] group-hover/sentence:rotate-[-5deg] transform">e</span>
-          <span className="group-hover/sentence:translate-y-[5%] group-hover/sentence:rotate-[-5deg] transform">n</span>
-          <span className="group-hover/sentence:translate-y-[-20%] group-hover/sentence:rotate-[-5deg] transform">c</span>
-          <span className="group-hover/sentence:translate-x-[50%] group-hover/sentence:translate-y-[-40%] group-hover/sentence:rotate-[10deg] transform">e</span>
+          <span className="group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg] transform">J</span>
+          <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg] transform">o</span>
+          <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">b</span>
+          <span>&nbsp;</span>
+        </LetterGroup>
+        <LetterGroup>
+          <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">T</span>
+          <span className="group-hover/sentence:translate-x-[-40%] group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-6deg] transform">o</span>
+          <span>&nbsp;</span>
+        </LetterGroup>
+        <LetterGroup>
+          <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">P</span>
+          <span className="group-hover/sentence:translate-x-[-40%] group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-6deg] transform">a</span>
+          <span className="group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg] transform">s</span>
+          <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg] transform">s</span>
+          <span className="group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-3deg] transform">i</span>
+          <span className="group-hover/sentence:translate-y-[-5%] group-hover/sentence:rotate-[-5deg] transform">o</span>
+          <span className="group-hover/sentence:translate-y-[-15%] group-hover/sentence:rotate-[-5deg] transform">n</span>
         </LetterGroup>
       </SentenceGroup>
     </PageTitle>
