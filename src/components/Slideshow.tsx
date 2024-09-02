@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import spain from "../assets/spain-large.jpg";
 import sky from "../assets/sky-large.jpg";
@@ -30,31 +30,31 @@ function Slideshow({ className }: { className?: string }) {
   const [slide, setSlide] = useState(0);
   const track = useRef<HTMLDivElement>(null);
 
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => setMouseDownAt(e.clientX);
-  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => setMouseDownAt(e.touches[0].clientX);
+
+
   const onMouseUp = () => {
     setMouseDownAt(0);
     setPrevSlide(slide);
   };
   const onTouchEnd = onMouseUp;
 
-  const images = useMemo(() => track.current?.querySelectorAll("img") || [], []);
-
   const handlePointerMove = useCallback((clientX: number) => {
-    if (mouseDownAt === 0 || !track.current) return;
+    const curr = track.current;
+    if (mouseDownAt === 0 || !curr) return;
 
     const delta = mouseDownAt - clientX;
-    const maxDelta = window.innerWidth / 1.5;
+    const maxDelta = curr.clientWidth / 2
     const percentage = (delta / maxDelta) * -100;
     const nextPercentage = Math.max(Math.min(prevSlide + percentage, 0), -100);
 
-    track.current.animate(
+    const images = track.current.querySelectorAll("img");
+
+    curr.animate(
       {
         transform: `translateX(${nextPercentage}%)`,
       },
       { duration: 1200, fill: "forwards" }
     );
-    setSlide(nextPercentage);
 
     images.forEach((image) => {
       image.animate(
@@ -64,10 +64,13 @@ function Slideshow({ className }: { className?: string }) {
         { duration: 1200, fill: "forwards" }
       );
     });
-  }, [mouseDownAt, prevSlide, images]);
+
+    setSlide(nextPercentage)
+  }, [mouseDownAt, prevSlide]);
 
 
-
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => setMouseDownAt(e.clientX);
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => setMouseDownAt(e.touches[0].clientX);
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => handlePointerMove(e.clientX);
   const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => handlePointerMove(e.touches[0].clientX);
 
