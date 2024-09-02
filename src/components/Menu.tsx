@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import { FaCamera, FaHome } from "react-icons/fa"
 import { FaCode, FaFilePen } from "react-icons/fa6"
 import { GrWorkshop } from "react-icons/gr"
@@ -33,16 +33,11 @@ function Menu() {
 }
 
 function NavItem({ href, icon, open, order, quantity, degree = 360, onHover }: { href: string, icon: JSX.Element, open: boolean, order: number, quantity: number, degree?: number, onHover?: (text: string) => void }) {
-  const ref = useRef<HTMLAnchorElement>(null)
-
-  useEffect(() => {
-    ref.current?.setAttribute("after", `${href}`)
-  }, [href])
-
   return (
     <div onMouseOver={() => onHover && onHover(href)} style={{ rotate: `${open ? `${degree / quantity * order}deg` : ""}`, transitionDelay: `${0.1 * order}s` }} className={`absolute size-12 transition-all duration-700 left-0 ${open ? `origin-[10rem] translate-x-0` : "translate-x-[8.5rem]"}`}>
       <div style={{ rotate: `${-degree / quantity * order}deg` }} className="bg-black dark:bg-white rounded-full size-full transition-all">
-        <a ref={ref} href={"#" + href} className="size-full *:size-full *:p-2 peer after:content-[attr(after)] after:opacity-0 after:hover:opacity-[100] after:text-black after:dark:text-white after:transition-opacity after:duration-500 after:capitalize">{icon}</a>
+        <a href={"#" + href} className="size-full *:size-full *:p-2 peer">{icon}</a>
+        <div className="text-black capitalize dark:text-white absolute opacity-0 transition-opacity duration-200 peer-hover:opacity-100 w-full text-center">{href}</div>
       </div>
     </div>
   )
