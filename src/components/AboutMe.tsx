@@ -1,7 +1,7 @@
 import PageWrapper from "./PageWrapper";
 import LetterGroup from "./ui/text/LetterGroup";
 import SentenceGroup from "./ui/text/SentenceGroup";
-import profile from "../assets/profile.webp"
+import profile from "../assets/profile_(medium).webp"
 import PageTitle from "./ui/PageTitle";
 import Grid from "./ui/Grid";
 import Experience from "./ui/Experience";
@@ -30,8 +30,8 @@ function AboutMe() {
       <Grid className="flex-1 sm:grid-cols-2">
         <Grid.Center className="sm:order-1">
           <Grid.Item positionX="right" positionY="up" className="relative aspect-square sm:aspect-square">
-            <div className="overflow-hidden size-full absolute top-0 animate-blob bg-transparent">
-              <img src={profile} alt="Me in nature" className="scale-x-[-1] object-cover" />
+            <div className="overflow-hidden absolute top-0 animate-blob bg-transparent">
+              <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover" />
             </div>
           </Grid.Item>
         </Grid.Center>
