@@ -2,25 +2,23 @@ import { twMerge } from "tailwind-merge"
 
 function Grid({ children, className }: { children: React.ReactNode, className?: string }) {
   return (
-    <div className={twMerge("grid place-items-center sm:pt-[10vmin]", className)}>
+    <div className={twMerge("grid gap-x-[10vw] gap-y-[4vmin]", className)}>
       {children}
     </div>
   )
 }
 
-Grid.Row = function ({ children, className }: { children: React.ReactNode, className?: string }) {
+Grid.Center = function ({ children, className }: { children: React.ReactNode, className?: string }) {
   return (
-    <div className={twMerge("flex flex-col gap-[4vmin] sm:flex-row justify-center items-center", className)}>
+    <div className={twMerge("grid place-items-center", className)}>
       {children}
     </div>
   )
 }
 
-Grid.Item = function ({ children, className, position, hover }: { children?: React.ReactNode, className?: string, position?: "up" | "down", hover?: boolean }) {
+Grid.Item = function ({ children, className, positionX, positionY }: { children: React.ReactNode, className?: string, positionX?: "left" | "right", positionY?: "up" | "down" }) {
   return (
-    <div className={twMerge(`reveal w-[80vw] sm:w-[40vmin] sm:h-[56vmin]  ${position === "down" && "sm:translate-y-[10vmin]"} ${position === "up" && "sm:-translate-y-[10vmin]"} ${hover && "hover:scale-105 duration-300"} `, className)}>
-      {children}
-    </div>
+    <div className={twMerge(`reveal aspect-[56/40] w-[90%] sm:max-w-[50vmin] ring-black ${positionX === "left" && "sm:ml-auto"} ${positionX === "right" && "sm:mr-auto"} ${positionY === "up" && "sm:-translate-y-[10vmin]"} ${positionY === "down" && "sm:translate-y-[10vmin]"}`, className)}> {children}</div>
   )
 }
 
