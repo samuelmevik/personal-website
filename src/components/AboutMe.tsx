@@ -30,7 +30,7 @@ function AboutMe() {
       <Grid className="flex-1 sm:grid-cols-2">
         <Grid.Center className="sm:order-1">
           <Grid.Item positionX="right" positionY="up" className="relative aspect-square sm:aspect-square">
-            <div className="overflow-hidden absolute top-0 animate-blob bg-transparent">
+            <div style={{borderRadius: "30% 60% 70% 40% / 50% 60% 30%"}} className="overflow-hidden absolute top-0 animate-blob bg-transparent">
               <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover" />
             </div>
           </Grid.Item>
