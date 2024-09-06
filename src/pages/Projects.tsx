@@ -6,6 +6,7 @@ import LetterGroup from "../components/ui/text/LetterGroup";
 import SentenceGroup from "../components/ui/text/SentenceGroup";
 import personalWebsite from "../assets/personal-website.webp"
 import patternMatcher from "../assets/pattern-matcher.webp"
+import rental from "../assets/rental-car-small.png"
 import PageWrapper from "../components/PageWrapper";
 import { SiTypescript, SiVite } from "react-icons/si";
 import { FaReact } from "react-icons/fa";
@@ -33,7 +34,7 @@ function Projects() {
         </SentenceGroup>
       </TitleWrapper>
 
-      <Grid className="flex-1 min-h-[90svh] sm:grid-cols-2">
+      <Grid className="flex-1 min-h-[150svh] sm:grid-cols-2">
         <Grid.Center>
           <Grid.Item positionX="left" positionY="up" className="relative">
             <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
@@ -62,18 +63,39 @@ function Projects() {
             <Experience title="Personal Website"  ><p>My personal website, to showcase a bit about myself!</p></Experience>
           </Grid.Item>
         </Grid.Center>
-      </Grid>
-      <Grid className="min-h-[45svh]">
         <Grid.Center>
-          <Grid.Item>
+          <Grid.Item positionX="left" positionY="up" className="relative">
+            <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={rental} alt="Pattern Matcher" />
+            <GithubLink link="https://github.com/samuelmevik/car-rental" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+            <Wrapper>
+              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
+                <SiTypescript className="size-8" />
+              </SlideItem>
+              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 2) * -1)" } }}>
+                <FaReact className="size-8" />
+              </SlideItem>
+              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 3) * -1)" } }}>
+                <RiTailwindCssFill className="size-8" />
+              </SlideItem>
+              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 4) * -1)" } }}>
+                <SiVite className="size-8" />
+              </SlideItem>
+            </Wrapper>
+            <Experience title="Rental Car"  ><p>Frontend web application built using Vite, React, and Tailwind CSS. It allows users to browse through available cars with a responsive, modern interface.</p></Experience>
+          </Grid.Item>
+        </Grid.Center>
+        <Grid.Center>
+          <Grid.Item positionX="right" positionY="down" className="relative">
             <div className="aspect-video ring-2 dark:ring-white ring-black" />
             <Experience title="Coming Soon..."  ><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vel saepe dignissimos dicta perferendis mollitia numquam neque nihil, corrupti quas.</p></Experience>
           </Grid.Item>
         </Grid.Center>
       </Grid>
+
     </PageWrapper>
   );
 }
+
 
 
 
