@@ -3,7 +3,7 @@ function Experience({ children, title, date, place }: { children: React.ReactNod
   return (
     <div className="flex flex-col p-1 gap-4">
       <div className="flex justify-between">
-        <p className="font-semibold">{title}</p>
+        <h3>{title}</h3>
         {date && <p className="self-center" style={{fontSize: "clamp(0.5rem, 1vw, 1rem)"}}>{date}</p>}
       </div>
       

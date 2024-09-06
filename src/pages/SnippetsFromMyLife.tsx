@@ -8,7 +8,7 @@ function SnippetsFromMyLife() {
   return (
     <PageWrapper id="album">
       <TitleWrapper>
-        <TitleWrapper.PreTitle text="Explore My Moments" />
+        <h2>Explore My Moments</h2>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
             <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">F</span>

@@ -12,7 +12,7 @@ function AboutMe() {
   return (
     <PageWrapper id="me" className="flex flex-col">
       <TitleWrapper>
-        <TitleWrapper.PreTitle text="Learn" />
+        <h2>Learn</h2>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
             <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">A</span>
