@@ -18,7 +18,7 @@ import TitleWrapper from "../components/TitleWrapper";
 
 function Projects() {
   return (
-    <PageWrapper id="projects" className="flex flex-col">
+    <PageWrapper id="projects" className="flex flex-col gap-[4vmin]">
       <TitleWrapper>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
@@ -34,7 +34,7 @@ function Projects() {
         </SentenceGroup>
       </TitleWrapper>
 
-      <Grid className="flex-1 min-h-[150svh] sm:grid-cols-2 pt-[4vmin]">
+      <Grid className="flex-1 min-h-[150svh] sm:grid-cols-2">
         <Grid.Center>
           <Grid.Item positionX="left" positionY="up" className="relative">
             <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />

@@ -10,7 +10,7 @@ import TitleWrapper from "../components/TitleWrapper";
 
 function AboutMe() {
   return (
-    <PageWrapper id="me" className="flex flex-col">
+    <PageWrapper id="me" className="flex flex-col gap-[4vmin]">
       <TitleWrapper>
         <h2>Learn</h2>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
