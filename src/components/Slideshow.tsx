@@ -86,7 +86,7 @@ function Slideshow({ className }: { className?: string }) {
       onTouchEnd={onTouchEnd}
       onTouchMove={onTouchMove}
     >
-      <div ref={track} style={{ width: "max-content" }} className="flex reveal gap-[4vmin] select-none *:w-[40vmin] *:h-[56vmin] *:object-cover">
+      <div ref={track} style={{ width: "max-content" }} className="flex reveal gap-[4vmin] select-none *:w-[40vmin] *:min-w-52 *:aspect-[5/7] *:object-cover">
         {imageSources.map(({ src, alt }) => (
           <img
             key={src}
