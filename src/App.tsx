@@ -9,6 +9,9 @@ import Projects from './pages/Projects'
 import AboutMe from './pages/AboutMe'
 import Menu from './components/Menu'
 import useRevealOnScroll from './hooks/RevealOnScroll'
+import '@fontsource-variable/cinzel';
+import '@fontsource/anonymous-pro';
+
 
 function App() {
   const ref = useRef<HTMLDivElement>(null)

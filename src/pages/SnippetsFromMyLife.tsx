@@ -29,7 +29,6 @@ function SnippetsFromMyLife() {
             <span className="group-hover/sentence:translate-y-[-20%] group-hover/sentence:rotate-[-5deg] transform">a</span>
             <span className="group-hover/sentence:translate-y-[-5%] group-hover/sentence:rotate-[-5deg] transform">m</span>
             <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg] transform">e</span>
-            <span>&nbsp;</span>
           </LetterGroup>
         </SentenceGroup>
       </TitleWrapper>
