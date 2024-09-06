@@ -1,13 +1,14 @@
-import PageWrapper from "./PageWrapper";
-import Slideshow from "./Slideshow";
-import PageTitle from "./ui/PageTitle";
-import LetterGroup from "./ui/text/LetterGroup";
-import SentenceGroup from "./ui/text/SentenceGroup";
+import PageWrapper from "../components/PageWrapper";
+import Slideshow from "../components/Slideshow";
+import LetterGroup from "../components/ui/text/LetterGroup";
+import SentenceGroup from "../components/ui/text/SentenceGroup";
+import TitleWrapper from "../components/TitleWrapper";
 
 function SnippetsFromMyLife() {
   return (
     <PageWrapper id="album">
-      <PageTitle preTitle="Explore My Moments">
+      <TitleWrapper>
+        <TitleWrapper.PreTitle text="Explore My Moments" />
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
             <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">F</span>
@@ -31,9 +32,8 @@ function SnippetsFromMyLife() {
             <span>&nbsp;</span>
           </LetterGroup>
         </SentenceGroup>
-      </PageTitle>
+      </TitleWrapper>
       <Slideshow />
-
     </PageWrapper >
   )
 }

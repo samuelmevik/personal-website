@@ -1,17 +1,18 @@
-import PageWrapper from "./PageWrapper";
-import LetterGroup from "./ui/text/LetterGroup";
-import SentenceGroup from "./ui/text/SentenceGroup";
+import PageWrapper from "../components/PageWrapper";
+import LetterGroup from "../components/ui/text/LetterGroup";
+import SentenceGroup from "../components/ui/text/SentenceGroup";
 import profile from "../assets/profile_medium.webp"
-import PageTitle from "./ui/PageTitle";
-import Grid from "./ui/Grid";
-import Experience from "./ui/Experience";
+import Grid from "../components/ui/Grid";
+import Experience from "../components/ui/Experience";
+import TitleWrapper from "../components/TitleWrapper";
 
 
 
 function AboutMe() {
   return (
     <PageWrapper id="me" className="flex flex-col">
-      <PageTitle preTitle="Get to know More">
+      <TitleWrapper>
+        <TitleWrapper.PreTitle text="Learn" />
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
             <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">A</span>
@@ -26,7 +27,7 @@ function AboutMe() {
             <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg] transform">e</span>
           </LetterGroup>
         </SentenceGroup>
-      </PageTitle>
+      </TitleWrapper>
       <Grid className="flex-1 sm:grid-cols-2">
         <Grid.Center className="sm:order-1">
           <Grid.Item positionX="right" positionY="up" className="relative aspect-square sm:aspect-square">

@@ -1,16 +1,15 @@
-import PageWrapper from "./PageWrapper"
-import Experience from "./ui/Experience"
-import Grid from "./ui/Grid"
-import PageTitle from "./ui/PageTitle"
-import LetterGroup from "./ui/text/LetterGroup"
-import SentenceGroup from "./ui/text/SentenceGroup"
+import PageWrapper from "../components/PageWrapper"
+import TitleWrapper from "../components/TitleWrapper"
+import Experience from "../components/ui/Experience"
+import Grid from "../components/ui/Grid"
+import LetterGroup from "../components/ui/text/LetterGroup"
+import SentenceGroup from "../components/ui/text/SentenceGroup"
+
 
 function Education() {
   return (
     <PageWrapper id="education" className="flex flex-col">
-      <PageTitle preTitle="From Beginning To The End">
-
-
+      <TitleWrapper>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
             <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">M</span>
@@ -29,7 +28,7 @@ function Education() {
             <span className="group-hover/sentence:translate-y-[-5%] group-hover/sentence:rotate-[-5deg] transform">n</span>
           </LetterGroup>
         </SentenceGroup>
-      </PageTitle>
+      </TitleWrapper>
 
       <Grid className="flex-1">
         <Grid.Center>

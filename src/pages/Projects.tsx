@@ -1,24 +1,24 @@
 // import page from "../assets/page.png"
 
-import Experience from "./ui/Experience";
-import GithubLink from "./ui/GithubLink";
-import LetterGroup from "./ui/text/LetterGroup";
-import SentenceGroup from "./ui/text/SentenceGroup";
+import Experience from "../components/ui/Experience";
+import GithubLink from "../components/ui/GithubLink";
+import LetterGroup from "../components/ui/text/LetterGroup";
+import SentenceGroup from "../components/ui/text/SentenceGroup";
 import personalWebsite from "../assets/personal-website.webp"
 import patternMatcher from "../assets/pattern-matcher.webp"
-import PageWrapper from "./PageWrapper";
+import PageWrapper from "../components/PageWrapper";
 import { SiTypescript, SiVite } from "react-icons/si";
 import { FaReact } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { twMerge } from "tailwind-merge";
-import PageTitle from "./ui/PageTitle";
-import Grid from "./ui/Grid";
+import Grid from "../components/ui/Grid";
+import TitleWrapper from "../components/TitleWrapper";
 
 
 function Projects() {
   return (
     <PageWrapper id="projects" className="flex flex-col">
-      <PageTitle preTitle="Dive Into My Portfolio">
+      <TitleWrapper>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
             <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">P</span>
@@ -28,24 +28,10 @@ function Projects() {
             <span className="group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-3deg] transform">e</span>
             <span className="group-hover/sentence:translate-y-[-40%] group-hover/sentence:rotate-[-5deg] transform">c</span>
             <span className="group-hover/sentence:translate-y-[-30%] group-hover/sentence:rotate-[-5deg] transform">t</span>
-            <span>&nbsp;</span>
-          </LetterGroup>
-          <LetterGroup>
-            <span className="group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg] transform">B</span>
-            <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg] transform">y</span>
-            <span>&nbsp;</span>
-          </LetterGroup>
-          <LetterGroup>
-            <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">P</span>
-            <span className="group-hover/sentence:translate-x-[-40%] group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-6deg] transform">r</span>
-            <span className="group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg] transform">o</span>
-            <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg] transform">j</span>
-            <span className="group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-3deg] transform">e</span>
-            <span className="group-hover/sentence:translate-y-[-40%] group-hover/sentence:rotate-[-5deg] transform">c</span>
-            <span className="group-hover/sentence:translate-y-[-30%] group-hover/sentence:rotate-[-5deg] transform">t</span>
+            <span className="group-hover/sentence:translate-y-[-20%] group-hover/sentence:rotate-[-5deg] transform">s</span>
           </LetterGroup>
         </SentenceGroup>
-      </PageTitle>
+      </TitleWrapper>
 
       <Grid className="flex-1 min-h-[90svh] sm:grid-cols-2">
         <Grid.Center>

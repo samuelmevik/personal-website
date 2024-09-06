@@ -1,6 +1,7 @@
-import PageWrapper from "./PageWrapper";
-import LetterGroup from "./ui/text/LetterGroup";
-import SentenceGroup from "./ui/text/SentenceGroup";
+import PageWrapper from "../components/PageWrapper";
+import LetterGroup from "../components/ui/text/LetterGroup";
+import SentenceGroup from "../components/ui/text/SentenceGroup";
+
 
 function Header() {
   return (
