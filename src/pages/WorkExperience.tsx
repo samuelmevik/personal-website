@@ -31,7 +31,7 @@ function WorkExperience() {
       </SentenceGroup>
     </TitleWrapper>
 
-    <Grid className="flex-1 sm:grid-cols-2">
+    <Grid className="flex-1 sm:grid-cols-2 pt-[4vmin]">
       <Grid.Center>
         <Grid.Item positionX="left" positionY="up">
           <img className="object-cover w-full" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.wallpapersafari.com%2F83%2F26%2FTVC4pE.jpeg&f=1&nofb=1&ipt=3e708cd41f0adcc5ffe106178b729da1f7618611c72196f3703626f9d48b4cb5&ipo=images" alt="Care" />
