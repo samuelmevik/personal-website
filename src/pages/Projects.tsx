@@ -78,8 +78,9 @@ function Projects() {
           </Wrapper>
           <Experience title="Rental Car"  ><p>Frontend web application built using Vite, React, and Tailwind CSS. It allows users to browse through available cars with a responsive, modern interface.</p></Experience>
         </Grid.Item>
-        <Grid.Item>
+        <Grid.Item className="relative">
           <div className="aspect-video ring-2 dark:ring-white ring-black" />
+          <GithubLink link="https://github.com/samuelmevik/solarsystem" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
           <Experience title="Solar System"  ><p>The project is a Java-based terminal application developed following the MVC (Model-View-Controller) design pattern. In this application, users can register, view, and manipulate celestial bodies such as planets, stars, and moons.</p></Experience>
         </Grid.Item>
         <Grid.Item>
