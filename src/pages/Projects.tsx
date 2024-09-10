@@ -34,7 +34,7 @@ function Projects() {
         </SentenceGroup>
       </TitleWrapper>
 
-      <Grid className="">
+      <Grid className="sm:pb-[5vmin]">
         <Grid.Item className=" relative">
           <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
           <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
@@ -77,6 +77,10 @@ function Projects() {
             </SlideItem>
           </Wrapper>
           <Experience title="Rental Car"  ><p>Frontend web application built using Vite, React, and Tailwind CSS. It allows users to browse through available cars with a responsive, modern interface.</p></Experience>
+        </Grid.Item>
+        <Grid.Item>
+          <div className="aspect-video ring-2 dark:ring-white ring-black" />
+          <Experience title="Solar System"  ><p>The project is a Java-based terminal application developed following the MVC (Model-View-Controller) design pattern. In this application, users can register, view, and manipulate celestial bodies such as planets, stars, and moons.</p></Experience>
         </Grid.Item>
         <Grid.Item>
           <div className="aspect-video ring-2 dark:ring-white ring-black" />
