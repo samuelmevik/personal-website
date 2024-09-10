@@ -2,9 +2,9 @@ import PageWrapper from "../components/PageWrapper";
 import LetterGroup from "../components/ui/text/LetterGroup";
 import SentenceGroup from "../components/ui/text/SentenceGroup";
 import profile from "../assets/profile_medium.webp"
-import Grid from "../components/ui/Grid";
 import Experience from "../components/ui/Experience";
 import TitleWrapper from "../components/TitleWrapper";
+import Grid from "../components/ui/Grid";
 
 
 
@@ -28,22 +28,18 @@ function AboutMe() {
           </LetterGroup>
         </SentenceGroup>
       </TitleWrapper>
-      <Grid className="flex-1 sm:grid-cols-2">
-        <Grid.Center className="sm:order-1">
-          <Grid.Item positionX="right" positionY="up" className="relative aspect-square sm:aspect-square">
-            <div style={{borderRadius: "30% 60% 70% 40% / 50% 60% 30%"}} className="overflow-hidden absolute top-0 animate-blob bg-transparent">
-              <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover" />
-            </div>
-          </Grid.Item>
-        </Grid.Center>
 
-        <Grid.Center>
-          <Grid.Item positionX="left" positionY="down" className="aspect-square sm:aspect-square">
-            <Experience title="Hello!">
-              <p>I'm a software developer based in Kalmar. I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
-              <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p></Experience>
-          </Grid.Item>
-        </Grid.Center>
+      <Grid>
+        <Grid.Item className="md:!translate-x-[calc(33%+2vw)]">
+          <div style={{ borderRadius: "30% 60% 70% 40% / 50% 60% 30%" }} className="overflow-hidden aspect-square mx-auto h-full animate-blob bg-transparent">
+            <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover" />
+          </div>
+        </Grid.Item>
+        <Grid.Item className="md:!translate-x-0">
+          <Experience title="Hello!">
+            <p>I'm a software developer based in Kalmar. I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
+            <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p></Experience>
+        </Grid.Item>
       </Grid>
     </PageWrapper >
   )

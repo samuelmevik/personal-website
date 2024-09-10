@@ -30,18 +30,16 @@ function Education() {
         </SentenceGroup>
       </TitleWrapper>
 
-      <Grid className="flex-1">
-        <Grid.Center>
-          <Grid.Item className="sm:max-w-[80vmin]">
-            <img className="object-cover w-full" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.timeshighereducation.com%2Fsites%2Fdefault%2Ffiles%2Finstitution%2Fheader_image%2Flnu-header-image-1950x700.jpg&f=1&nofb=1&ipt=3826ebcc7505c0532ce5fc8d33589c12f6b5e7901a072923a0286d397093d213&ipo=images" alt="Linneaus University" />
-            <Experience title="Bachelor of Web Development" date="August 2021 - June 2024" place="Linnaeus university">
-              <p>My education has provided me with a solid computer science foundation, focusing
-                on web programming.
-                During my studies, I honed my skills in programming, developing, and deploying
-                robust web applications with high code quality across various platforms.</p>
-            </Experience>
-          </Grid.Item>
-        </Grid.Center>
+      <Grid className="flex-1 place-items-center">
+        <div className="sm:max-w-[80vmin]">
+          <img className="object-cover w-full" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.timeshighereducation.com%2Fsites%2Fdefault%2Ffiles%2Finstitution%2Fheader_image%2Flnu-header-image-1950x700.jpg&f=1&nofb=1&ipt=3826ebcc7505c0532ce5fc8d33589c12f6b5e7901a072923a0286d397093d213&ipo=images" alt="Linneaus University" />
+          <Experience title="Bachelor of Web Development" date="August 2021 - June 2024" place="Linnaeus university">
+            <p>My education has provided me with a solid computer science foundation, focusing
+              on web programming.
+              During my studies, I honed my skills in programming, developing, and deploying
+              robust web applications with high code quality across various platforms.</p>
+          </Experience>
+        </div>
       </Grid>
     </PageWrapper>
   )

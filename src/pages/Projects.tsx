@@ -12,8 +12,8 @@ import { SiTypescript, SiVite } from "react-icons/si";
 import { FaReact } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { twMerge } from "tailwind-merge";
-import Grid from "../components/ui/Grid";
 import TitleWrapper from "../components/TitleWrapper";
+import Grid from "../components/ui/Grid";
 
 
 function Projects() {
@@ -34,64 +34,55 @@ function Projects() {
         </SentenceGroup>
       </TitleWrapper>
 
-      <Grid className="flex-1 min-h-[150svh] sm:grid-cols-2">
-        <Grid.Center>
-          <Grid.Item positionX="left" positionY="up" className="relative">
-            <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
-            <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
-            <Experience title="Pattern Matcher"  ><p>There are limited ways in Javascript to match expressions with the exception of strings. The switch is severely limiting. To avoid accidental fallthrough an explicit break is required in each case and the only comparison that it can do is ===. This library aim is to solve these problems by providing a declarative version of the if and switch conditionals. Where the shape of the shape of the data is described by "patterns".</p></Experience>
-          </Grid.Item>
-        </Grid.Center>
-        <Grid.Center>
-          <Grid.Item positionX="right" positionY="down" className="relative">
-            <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" />
-            <GithubLink link="https://github.com/" direction="top-left" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
-            <Wrapper>
-              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
-                <SiTypescript className="size-8" />
-              </SlideItem>
-              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 2) * -1)" } }}>
-                <FaReact className="size-8" />
-              </SlideItem>
-              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 3) * -1)" } }}>
-                <RiTailwindCssFill className="size-8" />
-              </SlideItem>
-              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 4) * -1)" } }}>
-                <SiVite className="size-8" />
-              </SlideItem>
-            </Wrapper>
-            <Experience title="Personal Website"  ><p>My personal website, to showcase a bit about myself!</p></Experience>
-          </Grid.Item>
-        </Grid.Center>
-        <Grid.Center>
-          <Grid.Item positionX="left" positionY="up" className="relative">
-            <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={rental} alt="Pattern Matcher" />
-            <GithubLink link="https://github.com/samuelmevik/car-rental" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
-            <Wrapper>
-              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
-                <SiTypescript className="size-8" />
-              </SlideItem>
-              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 2) * -1)" } }}>
-                <FaReact className="size-8" />
-              </SlideItem>
-              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 3) * -1)" } }}>
-                <RiTailwindCssFill className="size-8" />
-              </SlideItem>
-              <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 4) * -1)" } }}>
-                <SiVite className="size-8" />
-              </SlideItem>
-            </Wrapper>
-            <Experience title="Rental Car"  ><p>Frontend web application built using Vite, React, and Tailwind CSS. It allows users to browse through available cars with a responsive, modern interface.</p></Experience>
-          </Grid.Item>
-        </Grid.Center>
-        <Grid.Center>
-          <Grid.Item positionX="right" positionY="down" className="relative">
-            <div className="aspect-video ring-2 dark:ring-white ring-black" />
-            <Experience title="Coming Soon..."  ><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vel saepe dignissimos dicta perferendis mollitia numquam neque nihil, corrupti quas.</p></Experience>
-          </Grid.Item>
-        </Grid.Center>
+      <Grid className="">
+        <Grid.Item className=" relative">
+          <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
+          <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+          <Experience title="Pattern Matcher"  ><p>There are limited ways in Javascript to match expressions with the exception of strings. The switch is severely limiting. To avoid accidental fallthrough an explicit break is required in each case and the only comparison that it can do is ===. This library aim is to solve these problems by providing a declarative version of the if and switch conditionals. Where the shape of the shape of the data is described by "patterns".</p></Experience>
+        </Grid.Item>
+        <Grid.Item className="relative">
+          <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" />
+          <GithubLink link="https://github.com/" direction="top-left" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+          <Wrapper>
+            <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
+              <SiTypescript className="size-8" />
+            </SlideItem>
+            <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 2) * -1)" } }}>
+              <FaReact className="size-8" />
+            </SlideItem>
+            <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 3) * -1)" } }}>
+              <RiTailwindCssFill className="size-8" />
+            </SlideItem>
+            <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 4) * -1)" } }}>
+              <SiVite className="size-8" />
+            </SlideItem>
+          </Wrapper>
+          <Experience title="Personal Website"  ><p>My personal website, to showcase a bit about myself!</p></Experience>
+        </Grid.Item>
+        <Grid.Item className="relative">
+          <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={rental} alt="Pattern Matcher" />
+          <GithubLink link="https://github.com/samuelmevik/car-rental" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+          <Wrapper>
+            <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
+              <SiTypescript className="size-8" />
+            </SlideItem>
+            <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 2) * -1)" } }}>
+              <FaReact className="size-8" />
+            </SlideItem>
+            <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 3) * -1)" } }}>
+              <RiTailwindCssFill className="size-8" />
+            </SlideItem>
+            <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 4) * -1)" } }}>
+              <SiVite className="size-8" />
+            </SlideItem>
+          </Wrapper>
+          <Experience title="Rental Car"  ><p>Frontend web application built using Vite, React, and Tailwind CSS. It allows users to browse through available cars with a responsive, modern interface.</p></Experience>
+        </Grid.Item>
+        <Grid.Item>
+          <div className="aspect-video ring-2 dark:ring-white ring-black" />
+          <Experience title="Coming Soon..."  ><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vel saepe dignissimos dicta perferendis mollitia numquam neque nihil, corrupti quas.</p></Experience>
+        </Grid.Item>
       </Grid>
-
     </PageWrapper>
   );
 }
