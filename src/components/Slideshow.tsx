@@ -88,9 +88,8 @@ function Slideshow({ className }: { className?: string }) {
     >
       <div ref={track} style={{ width: "max-content" }} className="flex reveal gap-[4vmin] select-none">
         {imageSources.map(({ src, alt }) => (
-          <div className=" relative group">
+          <div className=" relative group" key={src}>
             <img
-              key={src}
               style={{ objectPosition: "100% center", willChange: "auto" }}
               className="w-[40vmin] min-w-52 aspect-[5/7] object-cover"
               src={src}
