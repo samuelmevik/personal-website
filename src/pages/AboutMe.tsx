@@ -35,7 +35,7 @@ function AboutMe() {
             <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover" />
           </div>
         </Grid.Item>
-        <Grid.Item className="md:!translate-x-0">
+        <Grid.Item className="md:!translate-x-[-8vw]">
           <Experience title="Hello!">
             <p>I'm a software developer based in Kalmar. I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
             <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p></Experience>
