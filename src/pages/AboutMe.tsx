@@ -30,7 +30,7 @@ function AboutMe() {
       </TitleWrapper>
 
       <Grid>
-        <Grid.Item className="md:!translate-x-[calc(33%+2vw)]">
+        <Grid.Item className="md:!translate-x-[calc(33%+2vw)] !aspect-[56/40]">
           <div style={{ borderRadius: "30% 60% 70% 40% / 50% 60% 30%" }} className="overflow-hidden aspect-square mx-auto h-full animate-blob bg-transparent">
             <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover" />
           </div>

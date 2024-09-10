@@ -6,7 +6,7 @@ function Grid({ children, className }: { children: React.ReactNode, className?: 
 
 
 Grid.Item = function ({ children, className }: { children?: React.ReactNode, className?: string }) {
-  return <div className={twMerge("aspect-[56/40] w-[90%] md:w-[55vmin] duration-1000 mx-auto transition-transform md:even:translate-x-[calc(33%+2vw)] md:odd:-translate-x-[calc(33%+2vw)]", className)}>{children}</div>
+  return <div className={twMerge("aspect-[40/56] md:aspect-[56/40] w-[90%] md:w-[55vmin] duration-1000 mx-auto transition-transform md:even:translate-x-[calc(33%+2vw)] md:odd:-translate-x-[calc(33%+2vw)]", className)}>{children}</div>
 }
 
 export default Grid
