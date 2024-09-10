@@ -18,7 +18,7 @@ function App() {
   useRevealOnScroll(ref)
 
   return (
-    <div ref={ref} className='overflow-hidden bg-white transition-colors duration-500 dark:bg-black dark:text-white'>
+    <div ref={ref} className='bg-white transition-colors duration-500 dark:bg-black dark:text-white'>
       <ThemeToggler />
       <Menu />
       <Header />

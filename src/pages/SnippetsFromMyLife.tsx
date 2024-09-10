@@ -6,7 +6,7 @@ import TitleWrapper from "../components/TitleWrapper";
 
 function SnippetsFromMyLife() {
   return (
-    <PageWrapper id="album">
+    <PageWrapper id="album" className="overflow-x-hidden">
       <TitleWrapper>
         <h2>Explore My Moments</h2>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
