@@ -1,47 +1,120 @@
-import { useState } from "react"
-import { FaCamera, FaHome } from "react-icons/fa"
-import { FaCode, FaFilePen } from "react-icons/fa6"
-import { GrWorkshop } from "react-icons/gr"
-import { IoMdPerson } from "react-icons/io"
-import { LuPlus } from "react-icons/lu"
+import { useState } from "react";
+import { FaCamera, FaCode, FaHome } from "react-icons/fa";
+import { FaFilePen } from "react-icons/fa6";
+import { GrWorkshop } from "react-icons/gr";
+import { IoMdPerson } from "react-icons/io";
+import { LuPlus } from "react-icons/lu";
+
+const menuOptions = [
+  {
+    icon: <FaHome />,
+    href: "home",
+  },
+  {
+    icon: <IoMdPerson />,
+    href: "me",
+  },
+  {
+    icon: <FaCamera />,
+    href: "album",
+  },
+  {
+    icon: <GrWorkshop />,
+    href: "work",
+  },
+  {
+    icon: <FaFilePen />,
+    href: "education",
+  },
+  {
+    icon: <FaCode />,
+    href: "projects",
+  },
+];
+
+const squareSize = "size-[calc(40vmin+8rem)]";
+const toggleSize = "size-[calc(6vmin+2rem)]";
+const refSize = "size-[calc(4vmin+1.5rem)]";
+const refXTransform = "translate-x-[calc((40vmin+8rem)/2-(4vmin+1.5rem)/2)]"; // = squareSize/2 - refSize/2
+const refXOrigin = "origin-[calc((40vmin+8rem)/2)]"; // squareSize / 2
+const translateMenuY = "translate-y-[calc(50%-(6vmin+1rem))]";
+const degree = 180;
 
 function Menu() {
+  const [open, setOpen] = useState(false);
 
-  const [open, setOpen] = useState(false)
-
-  function toggleMenu() {
-    setOpen(prevState => !prevState)
+  function toggle() {
+    setOpen((prev) => !prev);
   }
-  const quantity = 5
-  const degree = 180
 
   return (
-    <div className={'z-50 text-white translate-y-[calc(50%-4rem)] dark:text-black fixed mx-auto bottom-0 left-0 right-0 size-[20rem]'}>
-      <div className="grid place-items-center h-full">
-        <button onClick={toggleMenu} className={`z-50 peer size-[max(4vmin,4rem)] bg-black dark:bg-white p-1 rounded-full transition-transform duration-1000 ${open && "rotate-[315deg]"}`} aria-label="Toggle Menu">
-          <LuPlus className="w-full h-full" />
+    <div
+      className={`z-50 text-white dark:text-black ${squareSize} fixed inset-x-0 bottom-0 m-auto ${translateMenuY}`}
+    >
+      <div className="absolute grid place-items-center size-full">
+        <button
+          onClick={toggle}
+          className={`grid z-50 ${toggleSize} place-items-center bg-black dark:bg-white rounded-full`}
+        >
+          <LuPlus
+            className={`size-full transition-transform duration-1000 ${
+              open && "rotate-[315deg]"
+            }`}
+          />
         </button>
-        <NavItem href="home" icon={<FaHome />} open={open} order={0} quantity={quantity} degree={degree} />
-        <NavItem href="me" icon={<IoMdPerson />} open={open} order={1} quantity={quantity} degree={degree} />
-        <NavItem href="album" icon={<FaCamera />} open={open} order={2} quantity={quantity} degree={degree} />
-        <NavItem href="work" icon={<GrWorkshop />} open={open} order={3} quantity={quantity} degree={degree} />
-        <NavItem href="education" icon={<FaFilePen />} open={open} order={4} quantity={quantity} degree={degree} />
-        <NavItem href="projects" icon={<FaCode />} open={open} order={5} quantity={quantity} degree={degree} />
       </div>
+      {menuOptions.map((option, index) => (
+        <NavItem key={index} open={open} index={index} {...option} />
+      ))}
     </div>
-  )
+  );
 }
 
-function NavItem({ href, icon, open, order, quantity, degree = 360, onHover }: { href: string, icon: JSX.Element, open: boolean, order: number, quantity: number, degree?: number, onHover?: (text: string) => void }) {
+function NavItem({
+  index,
+  open,
+  icon,
+  href,
+}: {
+  index: number;
+  open: boolean;
+  icon: JSX.Element;
+  href: string;
+}) {
   return (
-    <div onMouseOver={() => onHover && onHover(href)} style={{ rotate: `${open ? `${degree / quantity * order}deg` : ""}`, transitionDelay: `${0.1 * order}s` }} className={`absolute size-12 transition-all duration-700 left-0 ${open ? `origin-[10rem] translate-x-0` : "translate-x-[8.5rem]"}`}>
-      <div style={{ rotate: `${-degree / quantity * order}deg` }} className="bg-black dark:bg-white rounded-full size-full transition-all">
-        <a href={"#" + href} className="size-full *:size-full *:p-2 peer">{icon}</a>
-        <div className="text-black capitalize dark:text-white absolute opacity-0 transition-opacity duration-200 peer-hover:opacity-100 w-full text-center">{href}</div>
+    <div
+      style={{
+        rotate: `${
+          open ? `${(degree / (menuOptions.length - 1)) * index}deg` : ""
+        }`,
+        transitionDelay: `${0.1 * index}s`,
+      }}
+      className={`absolute inset-y-0 my-auto size-min transition-all duration-700
+        ${refXTransform} 
+        ${open && `!translate-x-0 ${refXOrigin}`}`}
+    >
+      <div
+        style={{
+          rotate: `${
+            open ? `${(degree / (menuOptions.length - 1)) * -index}deg` : ""
+          }`,
+          transitionDelay: `${0.1 * index}s`,
+        }}
+      >
+        <a
+          href={`#${href}`}
+          className={`${refSize} p-[1.25vmin] *:size-full bg-black dark:bg-white rounded-full grid place-items-center peer`}
+        >
+          {icon}
+        </a>
+        <span
+          className={`absolute capitalize inset-x-0 mx-auto text-center text-black dark:text-white duration-500 transition-opacity opacity-0 peer-hover:opacity-100`}
+        >
+          {href}
+        </span>
       </div>
     </div>
-  )
+  );
 }
 
-
-export default Menu
+export default Menu;
