@@ -35,6 +35,11 @@ function Projects() {
       </TitleWrapper>
 
       <Grid className="sm:pb-[5vmin]">
+      <Grid.Item className="!translate-x-[0] aspect-video">
+          <Experience title="My Coding Habits">
+            <p>I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
+            <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p></Experience>
+        </Grid.Item>
         <Grid.Item className=" relative">
           <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
           <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
