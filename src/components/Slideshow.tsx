@@ -54,9 +54,10 @@ function Slideshow({ className }: { className?: string }) {
     const { width, x } = image.getBoundingClientRect();
 
     // Calculate rect center and percentage
-    const rectCenterX = x + width / 2;
+    const halfWidth = width / 2;
+    const rectCenterX = x + halfWidth;
 
-    return Math.max(Math.min((rectCenterX / window.innerWidth) * 100, 100), 0);
+    return Math.max(Math.min((rectCenterX / window.innerWidth) * 100, 100 + halfWidth), -halfWidth);
   }
 
   const handlePointerMove = useCallback((clientX: number) => {
