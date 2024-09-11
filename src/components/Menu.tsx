@@ -33,11 +33,11 @@ const menuOptions = [
 ];
 
 const squareSize = "size-[calc(40vmin+8rem)]";
-const toggleSize = "size-[calc(6vmin+2rem)]";
+const toggleSize = "size-[calc(4vmin+2rem)]";
 const refSize = "size-[calc(4vmin+1.5rem)]";
 const refXTransform = "translate-x-[calc((40vmin+8rem)/2-(4vmin+1.5rem)/2)]"; // = squareSize/2 - refSize/2
 const refXOrigin = "origin-[calc((40vmin+8rem)/2)]"; // squareSize / 2
-const translateMenuY = "translate-y-[calc(50%-(6vmin+1rem))]";
+const translateMenuY = "translate-y-[calc(50%-(4vmin+2rem))]";
 const degree = 180;
 
 function Menu() {
