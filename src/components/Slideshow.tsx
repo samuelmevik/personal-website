@@ -1,27 +1,29 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import spain from "../assets/spain-large.jpg";
-import sky from "../assets/sky-large.jpg";
-import gymnasium from "../assets/gymnasium-large.jpg";
-import cheeta from "../assets/cheeta-large.jpg";
-import cheeta1 from "../assets/cheeta1-large.jpg";
-import flowerSouthAfrica from "../assets/flower-large.jpg";
-import chameleon from "../assets/chameleon-large.jpg";
-import crocodile from "../assets/crocodile-large.jpg";
-import flower from "../assets/flower1-large.jpg";
-import snorkling from "../assets/snorkling-large.jpg";
+import spain from "../assets/festival.jpg";
+import sky from "../assets/sky.jpg";
+import gymnasium from "../assets/gymnasium.jpg";
+import cheeta from "../assets/cheeta.jpg";
+import cheeta1 from "../assets/cheeta1.jpg";
+import flowerSouthAfrica from "../assets/flower.jpg";
+import chameleon from "../assets/chameleon.jpg";
+import crocodile from "../assets/crocodile.jpg";
+import flower from "../assets/flower1.jpg";
+import snorkling from "../assets/snorkling.jpg";
 
 const imageSources = [
   { src: cheeta, alt: "South Africa 2015" },
   { src: cheeta1, alt: "South Africa 2015" },
-  { src: crocodile, alt: "South Africa 2015" },
+
   { src: flower, alt: "Lesotho 2015" },
   { src: flowerSouthAfrica, alt: "Lesotho 2015" },
   { src: chameleon, alt: "Madagaskar 2017" },
+  { src: crocodile, alt: "Madagaskar 2017" },
+  { src: snorkling, alt: "Snorkling 2017" },
   { src: sky, alt: "Sarek 2017" },
   { src: spain, alt: "Spain 2019" },
   { src: gymnasium, alt: "Gymnasium 2019" },
-  { src: snorkling, alt: "Snorkling" },
+
 ];
 
 function Slideshow({ className }: { className?: string }) {
@@ -81,9 +83,14 @@ function Slideshow({ className }: { className?: string }) {
 
 
     for (const image of images) {
-      const { left, right } = image.getBoundingClientRect();
+      const SECURITY_MARGIN = window.innerWidth * 0.2;
+      const { left, right, width } = image.getBoundingClientRect();
+
       // Early return if the image is fully outside the viewport
-      if (left > window.innerWidth || right < 0) continue;
+
+      if (left + width + SECURITY_MARGIN < 0 || right - width - SECURITY_MARGIN > window.innerWidth) {
+        continue;
+      }
 
       image.animate(
         {
@@ -119,6 +126,8 @@ function Slideshow({ className }: { className?: string }) {
         {imageSources.map(({ src, alt }) => (
           <div className="relative group" key={src}>
             <img
+              width={1280}
+              height={720}
               style={{ objectPosition: "100% center", willChange: "auto" }}
               className="w-[40vmin] min-w-52 aspect-[5/7] object-cover"
               src={src}
