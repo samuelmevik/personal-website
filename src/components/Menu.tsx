@@ -55,6 +55,7 @@ function Menu() {
         <button
           onClick={toggle}
           className={`grid z-50 ${toggleSize} place-items-center bg-black dark:bg-white rounded-full`}
+          aria-label="Toggle menu"
         >
           <LuPlus
             className={`size-full transition-transform duration-1000 ${

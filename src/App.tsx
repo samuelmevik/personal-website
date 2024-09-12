@@ -19,7 +19,7 @@ function App() {
   return (
     <div
       ref={ref}
-      className="bg-white overflow-hidden transition-colors duration-500 dark:bg-black dark:text-white"
+      className="bg-white transition-colors duration-500 dark:bg-black dark:text-white"
     >
       <ThemeToggler />
       <Menu />

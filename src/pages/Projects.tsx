@@ -34,19 +34,19 @@ function Projects() {
         </SentenceGroup>
       </TitleWrapper>
 
-      <Grid className="sm:pb-[5vmin]">
-      <Grid.Item className="!translate-x-[0] aspect-video">
+      <Grid className="sm:mb-[5vmin]">
+      <Grid.Item className="!translate-x-[0]">
           <Experience title="My Coding Habits">
             <p>I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
             <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p></Experience>
         </Grid.Item>
-        <Grid.Item className=" relative">
-          <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
+        <Grid.Item className="relative">
+          <img width={412} height={92} className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
           <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
           <Experience title="Pattern Matcher"  ><p>There are limited ways in Javascript to match expressions with the exception of strings. The switch is severely limiting. To avoid accidental fallthrough an explicit break is required in each case and the only comparison that it can do is ===. This library aim is to solve these problems by providing a declarative version of the if and switch conditionals. Where the shape of the shape of the data is described by "patterns".</p></Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" />
+          <img width={412} height={231} className="object-cover w-full ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" />
           <GithubLink link="https://github.com/" direction="top-left" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
           <Wrapper>
             <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
@@ -65,7 +65,7 @@ function Projects() {
           <Experience title="Personal Website"  ><p>My personal website, to showcase a bit about myself!</p></Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img className="object-cover w-full ring-2 dark:ring-white ring-black" src={rental} alt="Pattern Matcher" />
+          <img width={853} height={480} className="object-cover w-full ring-2 dark:ring-white ring-black" src={rental} alt="Pattern Matcher" />
           <GithubLink link="https://github.com/samuelmevik/car-rental" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
           <Wrapper>
             <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
