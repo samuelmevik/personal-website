@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge"
 
 function Grid({ children, className }: { children: React.ReactNode, className?: string }) {
-  return <div className={twMerge("grid gap-[4vmin]", className)}>{children}</div>
+  return <div className={twMerge("grid gap-[calc(5vmin+2rem)]", className)}>{children}</div>
 }
 
 
