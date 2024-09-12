@@ -8,7 +8,7 @@ import SentenceGroup from "../components/ui/text/SentenceGroup"
 
 function Education() {
   return (
-    <PageWrapper id="education" className="flex flex-col">
+    <PageWrapper id="education" className="flex flex-col mt-[4vmin]">
       <TitleWrapper>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
