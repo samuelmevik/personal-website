@@ -10,11 +10,11 @@ import chameleon from "../assets/chameleon.jpg";
 import crocodile from "../assets/crocodile.jpg";
 import flower from "../assets/flower1.jpg";
 import snorkling from "../assets/snorkling.jpg";
+import germany from "../assets/germany.jpg";
 
 const imageSources = [
   { src: cheeta, alt: "South Africa 2015" },
   { src: cheeta1, alt: "South Africa 2015" },
-
   { src: flower, alt: "Lesotho 2015" },
   { src: flowerSouthAfrica, alt: "Lesotho 2015" },
   { src: chameleon, alt: "Madagaskar 2017" },
@@ -23,7 +23,7 @@ const imageSources = [
   { src: sky, alt: "Sarek 2017" },
   { src: spain, alt: "Spain 2019" },
   { src: gymnasium, alt: "Gymnasium 2019" },
-
+  { src: germany, alt: "Germany 2023" },
 ];
 
 function Slideshow({ className }: { className?: string }) {
@@ -54,12 +54,7 @@ function Slideshow({ className }: { className?: string }) {
 
   function getImageObjectPosition(image: HTMLImageElement) {
     const { width, x } = image.getBoundingClientRect();
-
-    // Calculate rect center and percentage
-    const halfWidth = width / 2;
-    const rectCenterX = x + halfWidth;
-
-    return Math.max(Math.min((rectCenterX / window.innerWidth) * 100, 100 + halfWidth), -halfWidth);
+    return Math.max(Math.min((x / window.innerWidth) * 100, 100), -width);
   }
 
   const handlePointerMove = useCallback((clientX: number) => {
@@ -83,15 +78,11 @@ function Slideshow({ className }: { className?: string }) {
 
 
     for (const image of images) {
-      const SECURITY_MARGIN = window.innerWidth * 0.2;
-      const { left, right, width } = image.getBoundingClientRect();
-
-      // Early return if the image is fully outside the viewport
-
-      if (left + width + SECURITY_MARGIN < 0 || right - width - SECURITY_MARGIN > window.innerWidth) {
+      // If the image is not visible, don't animate it
+      const { right, left } = image.getBoundingClientRect();
+      if (right < 0 || left > window.innerWidth) {
         continue;
       }
-
       image.animate(
         {
           objectPosition: `${getImageObjectPosition(image)}% center`, // Move from right (100%) to left (0%)
