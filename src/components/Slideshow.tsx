@@ -25,6 +25,21 @@ const imageSources = [
   { src: gymnasium, alt: "Gymnasium 2019" },
   { src: germany, alt: "Germany 2023" },
 ];
+function updateImageObjectPosition(image: HTMLImageElement) {
+  image.animate(
+    {
+      objectPosition: `${getImageObjectPosition(image)}% center`, // Move from right (100%) to left (0%)
+    },
+    { duration: 1200, fill: "forwards" }
+  );
+}
+
+function getImageObjectPosition(image: HTMLImageElement) {
+  const { width, x } = image.getBoundingClientRect();
+  const viewportWidth = window.innerWidth;
+  const offset = (x + (width - viewportWidth) / 2) / viewportWidth * 100;
+  return Math.max(Math.min(50 + offset, 100), 0);
+}
 
 function Slideshow({ className }: { className?: string }) {
   const [mouseDownAt, setMouseDownAt] = useState(0);
@@ -41,21 +56,11 @@ function Slideshow({ className }: { className?: string }) {
   const onTouchEnd = onMouseUp;
 
   useEffect(() => {
-    const images = track.current?.querySelectorAll("img") ?? [];
-    images.forEach((image) => {
-      image.animate(
-        {
-          objectPosition: `${getImageObjectPosition(image)}% center`, // Move from right (100%) to left (0%)
-        },
-        { duration: 1200, fill: "forwards" }
-      );
-    });
+    const images = [...(track.current?.querySelectorAll("img") ?? [])];
+    images.forEach(updateImageObjectPosition)
+    window.addEventListener("resize", () => images.forEach(updateImageObjectPosition));
+    return () => window.removeEventListener("resize", () => images.forEach(updateImageObjectPosition));
   }, [])
-
-  function getImageObjectPosition(image: HTMLImageElement) {
-    const { width, x } = image.getBoundingClientRect();
-    return Math.max(Math.min((x / window.innerWidth) * 100, 100), -width);
-  }
 
   const handlePointerMove = useCallback((clientX: number) => {
     const curr = track.current;
@@ -66,8 +71,6 @@ function Slideshow({ className }: { className?: string }) {
     const percentage = (delta / maxDelta) * -100;
     const nextPercentage = Math.max(Math.min(prevSlide + percentage, 0), -100);
 
-    const images = track.current.querySelectorAll("img");
-
     curr.animate(
       {
         transform: `translateX(${nextPercentage}%)`,
@@ -75,7 +78,7 @@ function Slideshow({ className }: { className?: string }) {
       { duration: 1200, fill: "forwards" }
     );
 
-
+    const images = [...(track.current?.querySelectorAll("img") ?? [])]
 
     for (const image of images) {
       // If the image is not visible, don't animate it
@@ -83,12 +86,7 @@ function Slideshow({ className }: { className?: string }) {
       if (right < 0 || left > window.innerWidth) {
         continue;
       }
-      image.animate(
-        {
-          objectPosition: `${getImageObjectPosition(image)}% center`, // Move from right (100%) to left (0%)
-        },
-        { duration: 1200, fill: "forwards" }
-      );
+      updateImageObjectPosition(image);
     }
 
     setSlide(nextPercentage)
@@ -120,7 +118,7 @@ function Slideshow({ className }: { className?: string }) {
               width={1280}
               height={720}
               style={{ objectPosition: "100% center", willChange: "auto" }}
-              className="w-[40vmin] min-w-52 aspect-[5/7] object-cover"
+              className="sm:w-[40vmin] w-80 aspect-[5/7] object-cover"
               src={src}
               alt={alt}
               draggable="false"
