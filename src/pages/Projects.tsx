@@ -7,6 +7,7 @@ import SentenceGroup from "../components/ui/text/SentenceGroup";
 import personalWebsite from "../assets/personal-website.webp"
 import patternMatcher from "../assets/pattern-matcher.webp"
 import rental from "../assets/rental-car-small.png"
+import universe from "../assets/universe.png"
 import PageWrapper from "../components/PageWrapper";
 import { SiTypescript, SiVite } from "react-icons/si";
 import { FaReact } from "react-icons/fa";
@@ -35,18 +36,20 @@ function Projects() {
       </TitleWrapper>
 
       <Grid className="sm:mb-[5vmin]">
-      <Grid.Item className="!translate-x-[0]">
+        <Grid.Item className="!translate-x-[0]">
           <Experience title="My Coding Habits">
-            <p>I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
-            <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p></Experience>
+            <p>While I have a solid foundation in backend development and enjoy working with technologies like Docker and Kubernetes, my true passion lies in creating engaging and responsive user interfaces.</p>
+            <p>I’ve been diving deep into front-end development, focusing on tools like TailwindCSS and React to build sleek, dynamic user experiences. I love the challenge of combining design with functionality to make sites that not only look great but are also intuitive.</p>
+            <p>Make sure to click on the GitHub Cat to check out the repository!</p>
+          </Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img width={412} height={92} className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" />
+          <img width={412} height={92} className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" loading="lazy" />
           <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
           <Experience title="Pattern Matcher"  ><p>There are limited ways in Javascript to match expressions with the exception of strings. The switch is severely limiting. To avoid accidental fallthrough an explicit break is required in each case and the only comparison that it can do is ===. This library aim is to solve these problems by providing a declarative version of the if and switch conditionals. Where the shape of the shape of the data is described by "patterns".</p></Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img width={412} height={231} className="object-cover w-full ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" />
+          <img width={412} height={231} className="object-cover w-full ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" loading="lazy" />
           <GithubLink link="https://github.com/" direction="top-left" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
           <Wrapper>
             <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
@@ -62,10 +65,12 @@ function Projects() {
               <SiVite className="size-8" />
             </SlideItem>
           </Wrapper>
-          <Experience title="Personal Website"  ><p>My personal website, to showcase a bit about myself!</p></Experience>
+          <Experience title="Personal Website"  >
+            <p>My personal website, to showcase a bit about myself! I built it using Vite, React, Tailwind CSS, and Typescript, some of my favorite tools.</p>
+          </Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img width={853} height={480} className="object-cover w-full ring-2 dark:ring-white ring-black" src={rental} alt="Pattern Matcher" />
+          <img width={853} height={480} className="object-cover w-full ring-2 dark:ring-white ring-black" src={rental} alt="Pattern Matcher" loading="lazy" />
           <GithubLink link="https://github.com/samuelmevik/car-rental" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
           <Wrapper>
             <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
@@ -84,9 +89,9 @@ function Projects() {
           <Experience title="Rental Car"  ><p>Frontend web application built using Vite, React, and Tailwind CSS. It allows users to browse through available cars with a responsive, modern interface.</p></Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <div className="aspect-video ring-2 dark:ring-white ring-black" />
-          <GithubLink link="https://github.com/samuelmevik/solarsystem" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
-          <Experience title="Solar System"  ><p>The project is a Java-based terminal application developed following the MVC (Model-View-Controller) design pattern. In this application, users can register, view, and manipulate celestial bodies such as planets, stars, and moons.</p></Experience>
+          <img width={940} height={768} className="object-cover w-full ring-2 dark:ring-white ring-black" src={universe} alt="Universe" loading="lazy" />
+          <GithubLink link="https://github.com/samuelmevik/universe" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+          <Experience title="Universe"  ><p>The project is a Java-based terminal application developed following the MVC (Model-View-Controller) design pattern. In this application, users can register, view, and manipulate celestial bodies such as planets, stars, and moons.</p></Experience>
         </Grid.Item>
         <Grid.Item>
           <div className="aspect-video ring-2 dark:ring-white ring-black" />
