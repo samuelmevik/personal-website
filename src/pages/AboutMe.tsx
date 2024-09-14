@@ -30,15 +30,19 @@ function AboutMe() {
       </TitleWrapper>
 
       <Grid>
-        <Grid.Item className="md:!translate-x-[calc(33%+2vw)] !aspect-[56/40]">
+        <Grid.Item className="md:!translate-x-[calc(33%+2vw)] !aspect-video">
           <div style={{ borderRadius: "30% 60% 70% 40% / 50% 60% 30%" }} className="overflow-hidden aspect-square mx-auto h-full animate-blob bg-transparent">
-            <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover" />
+            <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover size-full" />
           </div>
         </Grid.Item>
-        <Grid.Item className="md:!translate-x-[-8vw]">
+        <Grid.Item className="md:!translate-x-[-10vw] md:!-translate-y-[8vh]">
           <Experience title="Hello!">
-            <p>I'm a software developer based in Kalmar. I have a strong passion for backend development and am deeply fascinated by containerization and orchestration technologies like Docker and Kubernetes.</p>
-            <p>I thrive on exploring these tools to push the boundaries of what's possible. Additionally, I enjoy working on the frontend and have been actively honing my skills in React to create dynamic and engaging user experiences.</p></Experience>
+            <p>My name is Samuel Mevik, and I am passionate about many things, especially coding. When I'm not knee-deep in a project, you can usually find me rolling dice with friends during an intense Dungeons & Dragons session, hitting the gym to work up a good sweat, or daydreaming about travelling.</p>
+            <p>DnD has been a creative outlet for me. The role-playing and problem-solving aspects of DnD pair perfectly with my love for coding—both require patience, creativity, and a little bit of magic, right?</p>
+            <p>As for the gym, it's my way to reset. There is something satisfying about struggling against gravity!</p>
+            <p>When it comes to traveling, I live for the moments of stepping into a new country, discovering new cultures, and soaking in new experiences.</p>
+            <p>Of course, I’ll share more about my coding practices and projects later, but let’s just say it’s a constantly evolving passion.</p>
+          </Experience>
         </Grid.Item>
       </Grid>
     </PageWrapper >
