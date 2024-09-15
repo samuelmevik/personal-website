@@ -30,12 +30,12 @@ function AboutMe() {
       </TitleWrapper>
 
       <Grid>
-        <Grid.Item className="md:!translate-x-[calc(33%+2vw)] !aspect-video">
+        <Grid.Item className="md:!translate-x-[min(33%,10vw)] !aspect-video">
           <div style={{ borderRadius: "30% 60% 70% 40% / 50% 60% 30%" }} className="overflow-hidden aspect-square mx-auto h-full animate-blob bg-transparent">
             <img width={568} height={568} src={profile} alt="Me in nature" className="scale-x-[-1] object-cover size-full" />
           </div>
         </Grid.Item>
-        <Grid.Item className="md:!translate-x-[-10vw] md:!-translate-y-[8vh]">
+        <Grid.Item className="md:!-translate-x-[min(33%,10vw)] md:!-translate-y-[min(8vh,10vw)]">
           <Experience title="Hello!">
             <p>My name is Samuel Mevik, and I am passionate about many things, especially coding. When I'm not knee-deep in a project, you can usually find me rolling dice with friends during an intense Dungeons & Dragons session, hitting the gym to work up a good sweat, or daydreaming about travelling.</p>
             <p>DnD has been a creative outlet for me. The role-playing and problem-solving aspects of DnD pair perfectly with my love for coding—both require patience, creativity, and a little bit of magic, right?</p>
