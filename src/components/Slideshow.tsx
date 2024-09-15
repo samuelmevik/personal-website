@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import spain from "../assets/festival.jpg";
 import sky from "../assets/sky.jpg";
@@ -40,16 +40,16 @@ function getImageObjectPosition(image: HTMLImageElement) {
 }
 
 function Slideshow({ className }: { className?: string }) {
-  const [mouseDownAt, setMouseDownAt] = useState(0);
-  const [prevSlide, setPrevSlide] = useState(0);
-  const [slide, setSlide] = useState(0);
+  const mouseDownAt = useRef(0);
+  const prevSlide = useRef(0);
+  const slide = useRef(0);
   const track = useRef<HTMLDivElement>(null);
 
 
 
   const onMouseUp = () => {
-    setMouseDownAt(0);
-    setPrevSlide(slide);
+    mouseDownAt.current = 0;
+    prevSlide.current = slide.current;
   };
   const onTouchEnd = onMouseUp;
 
@@ -62,12 +62,12 @@ function Slideshow({ className }: { className?: string }) {
 
   const handlePointerMove = useCallback((clientX: number) => {
     const curr = track.current;
-    if (mouseDownAt === 0 || !curr) return;
+    if (mouseDownAt.current === 0 || !curr) return;
 
-    const delta = mouseDownAt - clientX;
+    const delta = mouseDownAt.current - clientX;
     const maxDelta = curr.clientWidth / 2
     const percentage = (delta / maxDelta) * -100;
-    const nextPercentage = Math.max(Math.min(prevSlide + percentage, 0), -100);
+    const nextPercentage = Math.max(Math.min(prevSlide.current + percentage, 0), -100);
 
     curr.animate(
       {
@@ -87,19 +87,19 @@ function Slideshow({ className }: { className?: string }) {
       updateImageObjectPosition(image);
     }
 
-    setSlide(nextPercentage)
+    slide.current = nextPercentage;
   }, [mouseDownAt, prevSlide]);
 
 
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => setMouseDownAt(e.clientX);
-  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => setMouseDownAt(e.touches[0].clientX);
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => mouseDownAt.current = e.clientX;
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => mouseDownAt.current = e.touches[0].clientX;
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => handlePointerMove(e.clientX);
   const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => handlePointerMove(e.touches[0].clientX);
 
 
   return (
     <div
-      style={{ willChange: "auto" }}
+      style={{ willChange: "transform" }}
       className={twMerge("absolute top-1/2 left-1/2 -translate-y-1/2", className)}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
@@ -115,7 +115,7 @@ function Slideshow({ className }: { className?: string }) {
             <img
               width={1280}
               height={720}
-              style={{ objectPosition: "100% center", willChange: "auto" }}
+              style={{ objectPosition: "100% center", willChange: "transform" }}
               className="w-[80vmin] sm:w-[40vmin] aspect-[5/7] object-cover"
               src={src}
               alt={alt}
