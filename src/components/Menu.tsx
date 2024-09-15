@@ -34,8 +34,8 @@ const menuOptions = [
 
 const squareSize = "size-[calc(40vmin+8rem)]";
 const toggleSize = "size-[calc(4vmin+2rem)]";
-const refSize = "size-[calc(4vmin+1.5rem)]";
-const refXTransform = "translate-x-[calc((40vmin+8rem)/2-(4vmin+1.5rem)/2)]"; // = squareSize/2 - refSize/2
+const refSize = "size-[calc(3vmin+2rem)]";
+const refXTransform = "translate-x-[calc((40vmin+8rem)/2-(4vmin+2rem)/2)]"; // = squareSize/2 - refSize/2
 const refXOrigin = "origin-[calc((40vmin+8rem)/2)]"; // squareSize / 2
 const translateMenuY = "translate-y-[calc(50%-(4vmin+2rem))]";
 const degree = 180;
@@ -104,7 +104,7 @@ function NavItem({
       >
         <a
           href={`#${href}`}
-          className={`${refSize} p-[1.25vmin] *:size-full bg-black dark:bg-white rounded-full grid place-items-center peer`}
+          className={`${refSize} p-[calc(0.5vmin+0.5rem)] *:size-full bg-black dark:bg-white rounded-full grid place-items-center peer`}
         >
           {icon}
         </a>
