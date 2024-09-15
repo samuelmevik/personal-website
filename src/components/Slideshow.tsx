@@ -36,9 +36,7 @@ function updateImageObjectPosition(image: HTMLImageElement) {
 
 function getImageObjectPosition(image: HTMLImageElement) {
   const { width, x } = image.getBoundingClientRect();
-  const viewportWidth = window.innerWidth;
-  const offset = (x + (width - viewportWidth) / 2) / viewportWidth * 100;
-  return Math.max(Math.min(50 + offset, 100), 0);
+  return Math.max(Math.min((x + (width)) / (window.innerWidth + width) * 100, 100), 0);
 }
 
 function Slideshow({ className }: { className?: string }) {
@@ -118,7 +116,7 @@ function Slideshow({ className }: { className?: string }) {
               width={1280}
               height={720}
               style={{ objectPosition: "100% center", willChange: "auto" }}
-              className="sm:w-[40vmin] w-80 aspect-[5/7] object-cover"
+              className="w-[80vmin] sm:w-[40vmin] aspect-[5/7] object-cover"
               src={src}
               alt={alt}
               draggable="false"
