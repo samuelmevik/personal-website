@@ -21,7 +21,6 @@ h1 {
   line-height: 1.2;
   font-weight: 500;
   font-size: clamp(2.75rem, 6vw, 6rem);
-  margin-bottom: clamp(1rem, 5vh, 3rem);
 }
 
 h2 {
@@ -31,8 +30,6 @@ h2 {
 h3 {
   font-size: clamp(1.25rem, 3vw, 2rem);
 }
-
-
 
 .reveal {
   opacity: 0;
