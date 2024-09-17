@@ -14,8 +14,23 @@ export default {
           '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30%' },
           '100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%'},
         },
+        scroll_up: {
+          to: {
+            transform: 'translateY(calc(-50% - 1vmin))'
+          }
+        },
+        scroll_down: {
+          from: {
+            transform: 'translateY(calc(-50% - 1vmin))'
+          },
+          to: {
+            transform: 'translateY(0%)'
+          }
+        },
       },
-      animation: {
+      animation: {        
+        scroll_up: 'scroll_up 60s linear infinite',
+        scroll_down: 'scroll_down 60s linear infinite',
         blob: "blob 8s ease-in-out infinite",
       },
       plugins: [],
