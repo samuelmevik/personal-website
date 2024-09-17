@@ -51,10 +51,10 @@ function Menu() {
     <div
       className={`z-50 text-white dark:text-black ${squareSize} fixed inset-x-0 bottom-0 m-auto ${translateMenuY}`}
     >
-      <div className="absolute grid place-items-center size-full">
+      <div className="absolute grid size-full place-items-center">
         <button
           onClick={toggle}
-          className={`grid z-50 ${toggleSize} place-items-center bg-black dark:bg-white rounded-full`}
+          className={`z-50 grid ${toggleSize} place-items-center rounded-full bg-black dark:bg-white`}
           aria-label="Toggle menu"
         >
           <LuPlus
@@ -104,12 +104,12 @@ function NavItem({
       >
         <a
           href={`#${href}`}
-          className={`${refSize} p-[calc(0.5vmin+0.5rem)] *:size-full bg-black dark:bg-white rounded-full grid place-items-center peer`}
+          className={`${refSize} peer grid place-items-center rounded-full bg-black p-[calc(0.5vmin+0.5rem)] *:size-full dark:bg-white`}
         >
           {icon}
         </a>
         <span
-          className={`absolute capitalize inset-x-0 mx-auto text-center text-black dark:text-white duration-500 transition-opacity opacity-0 peer-hover:opacity-100`}
+          className={`absolute inset-x-0 mx-auto text-center capitalize text-black opacity-0 transition-opacity duration-500 peer-hover:opacity-100 dark:text-white`}
         >
           {href}
         </span>
