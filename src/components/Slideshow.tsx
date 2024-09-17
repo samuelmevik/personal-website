@@ -36,7 +36,10 @@ function updateImageObjectPosition(image: HTMLImageElement) {
 
 function getImageObjectPosition(image: HTMLImageElement) {
   const { width, x } = image.getBoundingClientRect();
-  return Math.max(Math.min((x + (width)) / (window.innerWidth + width) * 100, 100), 0);
+  return Math.max(
+    Math.min(((x + width) / (window.innerWidth + width)) * 100, 100),
+    0
+  );
 }
 
 function Slideshow({ className }: { className?: string }) {
@@ -44,8 +47,6 @@ function Slideshow({ className }: { className?: string }) {
   const prevSlide = useRef(0);
   const slide = useRef(0);
   const track = useRef<HTMLDivElement>(null);
-
-
 
   const onMouseUp = () => {
     mouseDownAt.current = 0;
@@ -55,52 +56,68 @@ function Slideshow({ className }: { className?: string }) {
 
   useEffect(() => {
     const images = [...(track.current?.querySelectorAll("img") ?? [])];
-    images.forEach(updateImageObjectPosition)
-    window.addEventListener("resize", () => images.forEach(updateImageObjectPosition));
-    return () => window.removeEventListener("resize", () => images.forEach(updateImageObjectPosition));
-  }, [])
-
-  const handlePointerMove = useCallback((clientX: number) => {
-    const curr = track.current;
-    if (mouseDownAt.current === 0 || !curr) return;
-
-    const delta = mouseDownAt.current - clientX;
-    const maxDelta = curr.clientWidth / 2
-    const percentage = (delta / maxDelta) * -100;
-    const nextPercentage = Math.max(Math.min(prevSlide.current + percentage, 0), -100);
-
-    curr.animate(
-      {
-        transform: `translateX(${nextPercentage}%)`,
-      },
-      { duration: 1200, fill: "forwards" }
+    images.forEach(updateImageObjectPosition);
+    window.addEventListener("resize", () =>
+      images.forEach(updateImageObjectPosition)
     );
+    return () =>
+      window.removeEventListener("resize", () =>
+        images.forEach(updateImageObjectPosition)
+      );
+  }, []);
 
-    const images = [...(track.current?.querySelectorAll("img") ?? [])]
+  const handlePointerMove = useCallback(
+    (clientX: number) => {
+      const curr = track.current;
+      if (mouseDownAt.current === 0 || !curr) return;
 
-    for (const image of images) {
-      // If the image is not visible, don't animate it
-      const { right, left } = image.getBoundingClientRect();
-      if (right < 0 || left > window.innerWidth) {
-        continue;
+      const delta = mouseDownAt.current - clientX;
+      const maxDelta = curr.clientWidth / 2;
+      const percentage = (delta / maxDelta) * -100;
+      const nextPercentage = Math.max(
+        Math.min(prevSlide.current + percentage, 0),
+        -100
+      );
+
+      curr.animate(
+        {
+          transform: `translateX(${nextPercentage}%)`,
+        },
+        { duration: 1200, fill: "forwards" }
+      );
+
+      const images = [...(track.current?.querySelectorAll("img") ?? [])];
+
+      for (const image of images) {
+        // If the image is not visible, don't animate it
+        const { right, left } = image.getBoundingClientRect();
+        if (right < 0 || left > window.innerWidth) {
+          continue;
+        }
+        updateImageObjectPosition(image);
       }
-      updateImageObjectPosition(image);
-    }
 
-    slide.current = nextPercentage;
-  }, [mouseDownAt, prevSlide]);
+      slide.current = nextPercentage;
+    },
+    [mouseDownAt, prevSlide]
+  );
 
-
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => mouseDownAt.current = e.clientX;
-  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => mouseDownAt.current = e.touches[0].clientX;
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => handlePointerMove(e.clientX);
-  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => handlePointerMove(e.touches[0].clientX);
-
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) =>
+    (mouseDownAt.current = e.clientX);
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) =>
+    (mouseDownAt.current = e.touches[0].clientX);
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) =>
+    handlePointerMove(e.clientX);
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) =>
+    handlePointerMove(e.touches[0].clientX);
 
   return (
     <div
       style={{ willChange: "transform" }}
-      className={twMerge("absolute top-1/2 left-1/2 -translate-y-1/2", className)}
+      className={twMerge(
+        "absolute top-1/2 left-1/2 -translate-y-1/2",
+        className
+      )}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseMove={onMouseMove}
@@ -109,7 +126,11 @@ function Slideshow({ className }: { className?: string }) {
       onTouchEnd={onTouchEnd}
       onTouchMove={onTouchMove}
     >
-      <div ref={track} style={{ width: "max-content" }} className="reveal flex select-none gap-[4vmin]">
+      <div
+        ref={track}
+        style={{ width: "max-content" }}
+        className="reveal flex select-none gap-[4vmin]"
+      >
         {imageSources.map(({ src, alt }) => (
           <div className="group relative" key={src}>
             <img
@@ -122,8 +143,8 @@ function Slideshow({ className }: { className?: string }) {
               draggable="false"
               loading="lazy"
             />
-            <div className="absolute inset-x-0 text-center opacity-0 duration-1000 ease-in-out group-hover:opacity-100">
-              <h2>{alt}</h2>
+            <div className="absolute inset-x-0 grid place-items-center opacity-0 duration-1000 ease-in-out group-hover:opacity-100">
+              <h3 className="text-nowrap">{alt}</h3>
             </div>
           </div>
         ))}
