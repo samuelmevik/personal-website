@@ -23,20 +23,20 @@ function Projects() {
       <TitleWrapper>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
           <LetterGroup>
-            <span className="group-hover/sentence:translate-x-[-80%] group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg]">P</span>
-            <span className="group-hover/sentence:translate-x-[-40%] group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-6deg] transform">r</span>
-            <span className="group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg] transform">o</span>
-            <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg] transform">j</span>
-            <span className="group-hover/sentence:translate-y-[20%] group-hover/sentence:rotate-[-3deg] transform">e</span>
-            <span className="group-hover/sentence:translate-y-[-40%] group-hover/sentence:rotate-[-5deg] transform">c</span>
-            <span className="group-hover/sentence:translate-y-[-30%] group-hover/sentence:rotate-[-5deg] transform">t</span>
-            <span className="group-hover/sentence:translate-y-[-20%] group-hover/sentence:rotate-[-5deg] transform">s</span>
+            <span className="group-hover/sentence/sentence:translate-y-[60%] group-hover/sentence/sentence:rotate-[4deg] group-hover/sentence:translate-x-[-80%]">P</span>
+            <span className="group-hover/sentence:translate-x-[-40%] group-hover/sentence:translate-y-[20%] group-hover/sentence:-rotate-6">r</span>
+            <span className="group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg]">o</span>
+            <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg]">j</span>
+            <span className="group-hover/sentence:translate-y-[20%] group-hover/sentence:-rotate-3">e</span>
+            <span className="group-hover/sentence:translate-y-[-40%] group-hover/sentence:rotate-[-5deg]">c</span>
+            <span className="group-hover/sentence:translate-y-[-30%] group-hover/sentence:rotate-[-5deg]">t</span>
+            <span className="group-hover/sentence:translate-y-[-20%] group-hover/sentence:rotate-[-5deg]">s</span>
           </LetterGroup>
         </SentenceGroup>
       </TitleWrapper>
 
       <Grid className="sm:mb-[5vmin]">
-        <Grid.Item className="!translate-x-[0]">
+        <Grid.Item className="!translate-x-0">
           <Experience title="My Coding Habits">
             <p>While I have a solid foundation in backend development and enjoy working with technologies like Docker and Kubernetes, my true passion lies in creating engaging and responsive user interfaces.</p>
             <p>I’ve been diving deep into front-end development, focusing on tools like TailwindCSS and React to build sleek, dynamic user experiences. I love the challenge of combining design with functionality to make sites that not only look great but are also intuitive.</p>
@@ -44,13 +44,13 @@ function Projects() {
           </Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img width={412} height={92} className="object-cover w-full ring-2 dark:ring-white ring-black" src={patternMatcher} alt="Pattern Matcher" loading="lazy" />
-          <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+          <img width={412} height={92} className="w-full object-cover ring-2 ring-black dark:ring-white" src={patternMatcher} alt="Pattern Matcher" loading="lazy" />
+          <GithubLink link="https://github.com/samuelmevik/pattern-matcher-es" direction="top-right" className="absolute right-0 top-0 rounded-es-lg bg-white p-1 text-black" />
           <Experience title="Pattern Matcher"  ><p>There are limited ways in Javascript to match expressions with the exception of strings. The switch is severely limiting. To avoid accidental fallthrough an explicit break is required in each case and the only comparison that it can do is ===. This library aim is to solve these problems by providing a declarative version of the if and switch conditionals. Where the shape of the shape of the data is described by "patterns".</p></Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img width={412} height={231} className="object-cover w-full ring-2 dark:ring-white ring-black" src={personalWebsite} alt="This Website" loading="lazy" />
-          <GithubLink link="https://github.com/" direction="top-left" className="p-1 text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+          <img width={412} height={231} className="w-full object-cover ring-2 ring-black dark:ring-white" src={personalWebsite} alt="This Website" loading="lazy" />
+          <GithubLink link="https://github.com/" direction="top-left" className="absolute right-0 top-0 rounded-es-lg bg-white p-1 text-black" />
           <Wrapper>
             <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
               <SiTypescript className="size-8" />
@@ -70,8 +70,8 @@ function Projects() {
           </Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img width={853} height={480} className="object-cover w-full ring-2 dark:ring-white ring-black" src={rental} alt="Pattern Matcher" loading="lazy" />
-          <GithubLink link="https://github.com/samuelmevik/car-rental" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+          <img width={853} height={480} className="w-full object-cover ring-2 ring-black dark:ring-white" src={rental} alt="Pattern Matcher" loading="lazy" />
+          <GithubLink link="https://github.com/samuelmevik/car-rental" direction="top-right" className="absolute right-0 top-0 rounded-es-lg bg-white p-1 text-black ring-2 ring-black" />
           <Wrapper>
             <SlideItem props={{ style: { animationDelay: "calc(30s / 4 * (4 - 1) * -1)" } }}>
               <SiTypescript className="size-8" />
@@ -89,12 +89,12 @@ function Projects() {
           <Experience title="Rental Car"  ><p>Frontend web application built using Vite, React, and Tailwind CSS. It allows users to browse through available cars with a responsive, modern interface.</p></Experience>
         </Grid.Item>
         <Grid.Item className="relative">
-          <img width={940} height={768} className="object-cover w-full ring-2 dark:ring-white ring-black" src={universe} alt="Universe" loading="lazy" />
-          <GithubLink link="https://github.com/samuelmevik/universe" direction="top-right" className="p-1 ring-2 ring-black text-black bg-white absolute top-0 right-0 rounded-es-lg" />
+          <img width={940} height={768} className="w-full object-cover ring-2 ring-black dark:ring-white" src={universe} alt="Universe" loading="lazy" />
+          <GithubLink link="https://github.com/samuelmevik/universe" direction="top-right" className="absolute right-0 top-0 rounded-es-lg bg-white p-1 text-black ring-2 ring-black" />
           <Experience title="Universe"  ><p>The project is a Java-based terminal application developed following the MVC (Model-View-Controller) design pattern. In this application, users can register, view, and manipulate celestial bodies such as planets, stars, and moons.</p></Experience>
         </Grid.Item>
         <Grid.Item>
-          <div className="aspect-video ring-2 dark:ring-white ring-black" />
+          <div className="aspect-video ring-2 ring-black dark:ring-white" />
           <Experience title="Coming Soon..."  ><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vel saepe dignissimos dicta perferendis mollitia numquam neque nihil, corrupti quas.</p></Experience>
         </Grid.Item>
       </Grid>
@@ -121,7 +121,7 @@ function Wrapper({ children }: { children: React.ReactNode }) {
       rgba(0, 0, 0, 1) 80%,
       rgba(0, 0, 0, 0)
       )
-`}} className="relative w-full h-10 overflow-hidden pt-1">
+`}} className="relative h-10 w-full overflow-hidden pt-1">
       {children}
     </div>
   )

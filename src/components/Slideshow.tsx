@@ -109,20 +109,20 @@ function Slideshow({ className }: { className?: string }) {
       onTouchEnd={onTouchEnd}
       onTouchMove={onTouchMove}
     >
-      <div ref={track} style={{ width: "max-content" }} className="flex reveal gap-[4vmin] select-none">
+      <div ref={track} style={{ width: "max-content" }} className="reveal flex select-none gap-[4vmin]">
         {imageSources.map(({ src, alt }) => (
-          <div className="relative group" key={src}>
+          <div className="group relative" key={src}>
             <img
               width={1280}
               height={720}
               style={{ objectPosition: "100% center", willChange: "transform" }}
-              className="w-[80vmin] sm:w-[40vmin] aspect-[5/7] object-cover"
+              className="aspect-[5/7] w-[80vmin] object-cover sm:w-[40vmin]"
               src={src}
               alt={alt}
               draggable="false"
               loading="lazy"
             />
-            <div className="absolute inset-x-0 text-center opacity-0 group-hover:opacity-100 duration-1000 ease-in-out">
+            <div className="absolute inset-x-0 text-center opacity-0 duration-1000 ease-in-out group-hover:opacity-100">
               <h2>{alt}</h2>
             </div>
           </div>

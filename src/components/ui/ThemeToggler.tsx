@@ -26,8 +26,8 @@ function ThemeToggler() {
 
   return (
 
-    <div className="fixed top-0 right-0 p-[4vmin] z-50">      
-      <button onClick={toggleTheme} className="bg-black dark:bg-white text-white dark:text-black rounded-full p-3 w- *:w-[max(3vmin,1rem)] *:h-[max(3vmin,1rem)]" aria-label="Toggles dark mode">
+    <div className="fixed right-0 top-0 z-50 p-[4vmin]">      
+      <button onClick={toggleTheme} className="rounded-full bg-black p-3 text-white *:size-[max(3vmin,1rem)] dark:bg-white dark:text-black" aria-label="Toggles dark mode">
       <IoIosSunny className="hidden dark:block" />
       <FaMoon className="dark:hidden" />
     </button>

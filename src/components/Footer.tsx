@@ -1,13 +1,13 @@
 function Footer() {
-  return (<footer className='sm:fixed bottom-0 left-0 right-0 p-[4vmin]'>
-    <p className='hover:opacity-50 transition-opacity'>→ samuel.mevik@outlook.com</p>
+  return (<footer className='inset-x-0 bottom-0 p-[4vmin] sm:fixed'>
+    <p className='transition-opacity hover:opacity-50'>→ samuel.mevik@outlook.com</p>
     <div className='flex justify-between'>
       <p>
-        <a className='hover:opacity-50 transition-opacity' href='https://www.linkedin.com/in/samuel-mevik/'>
+        <a className='transition-opacity hover:opacity-50' href='https://www.linkedin.com/in/samuel-mevik/'>
           → LinkedIn
         </a>
       </p>
-      <p className='hover:opacity-50 transition-opacity'>Samuel Mevik © 2024</p>
+      <p className='transition-opacity hover:opacity-50'>Samuel Mevik © 2024</p>
     </div>
 
   </footer>)
