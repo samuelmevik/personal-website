@@ -12,5 +12,5 @@ export default defineConfig({
       quality: 80,
     }
   })],
-  base: 'https://www.samuelmevik.com/'
+  base: 'https://samuelmevik.com/'
 })
