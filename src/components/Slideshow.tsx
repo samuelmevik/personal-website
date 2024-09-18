@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import spain from "../assets/festival.jpg";
 import sky from "../assets/sky.jpg";
@@ -11,6 +11,7 @@ import crocodile from "../assets/crocodile.jpg";
 import flower from "../assets/flower1.jpg";
 import snorkling from "../assets/snorkling.jpg";
 import germany from "../assets/germany.jpg";
+import useSlideshow from "../hooks/useSlideShow";
 
 const imageSources = [
   { src: cheeta, alt: "South Africa 2015" },
@@ -25,91 +26,19 @@ const imageSources = [
   { src: gymnasium, alt: "Gymnasium 2019" },
   { src: germany, alt: "Germany 2023" },
 ];
-function updateImageObjectPosition(image: HTMLImageElement) {
-  image.animate(
-    {
-      objectPosition: `${getImageObjectPosition(image)}% center`, // Move from right (100%) to left (0%)
-    },
-    { duration: 1200, fill: "forwards" }
-  );
-}
-
-function getImageObjectPosition(image: HTMLImageElement) {
-  const { width, x } = image.getBoundingClientRect();
-  return Math.max(
-    Math.min(((x + width) / (window.innerWidth + width)) * 100, 100),
-    0
-  );
-}
 
 function Slideshow({ className }: { className?: string }) {
-  const mouseDownAt = useRef(0);
-  const prevSlide = useRef(0);
-  const slide = useRef(0);
-  const track = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  const onMouseUp = () => {
-    mouseDownAt.current = 0;
-    prevSlide.current = slide.current;
-  };
-  const onTouchEnd = onMouseUp;
+  const {
+    onMouseUp,
+    onTouchEnd,
+    onMouseDown,
+    onTouchStart,
+    onMouseMove,
+    onTouchMove,
+  } = useSlideshow(trackRef);
 
-  useEffect(() => {
-    const images = [...(track.current?.querySelectorAll("img") ?? [])];
-    images.forEach(updateImageObjectPosition);
-    window.addEventListener("resize", () =>
-      images.forEach(updateImageObjectPosition)
-    );
-    return () =>
-      window.removeEventListener("resize", () =>
-        images.forEach(updateImageObjectPosition)
-      );
-  }, []);
-
-  const handlePointerMove = useCallback(
-    (clientX: number) => {
-      const curr = track.current;
-      if (mouseDownAt.current === 0 || !curr) return;
-
-      const delta = mouseDownAt.current - clientX;
-      const maxDelta = curr.clientWidth / 2;
-      const percentage = (delta / maxDelta) * -100;
-      const nextPercentage = Math.max(
-        Math.min(prevSlide.current + percentage, 0),
-        -100
-      );
-
-      curr.animate(
-        {
-          transform: `translateX(${nextPercentage}%)`,
-        },
-        { duration: 1200, fill: "forwards" }
-      );
-
-      const images = [...(track.current?.querySelectorAll("img") ?? [])];
-
-      for (const image of images) {
-        // If the image is not visible, don't animate it
-        const { right, left } = image.getBoundingClientRect();
-        if (right < 0 || left > window.innerWidth) {
-          continue;
-        }
-        updateImageObjectPosition(image);
-      }
-
-      slide.current = nextPercentage;
-    },
-    [mouseDownAt, prevSlide]
-  );
-
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) =>
-    (mouseDownAt.current = e.clientX);
-  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) =>
-    (mouseDownAt.current = e.touches[0].clientX);
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) =>
-    handlePointerMove(e.clientX);
-  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) =>
-    handlePointerMove(e.touches[0].clientX);
 
   return (
     <div
@@ -118,39 +47,45 @@ function Slideshow({ className }: { className?: string }) {
         "absolute top-1/2 left-1/2 -translate-y-1/2",
         className
       )}
-      onMouseDown={onMouseDown}
+      onMouseDown={(e) => onMouseDown(e.clientX)}
       onMouseUp={onMouseUp}
-      onMouseMove={onMouseMove}
+      onMouseMove={(e) => onMouseMove(e.clientX)}
       onMouseLeave={onMouseUp}
-      onTouchStart={onTouchStart}
+      onTouchStart={(e) => onTouchStart(e.touches[0].clientX)}
       onTouchEnd={onTouchEnd}
-      onTouchMove={onTouchMove}
+      onTouchMove={(e) => onTouchMove(e.touches[0].clientX)}
     >
       <div
-        ref={track}
+        ref={trackRef}
         style={{ width: "max-content" }}
         className="reveal flex select-none gap-[4vmin]"
       >
         {imageSources.map(({ src, alt }) => (
-          <div className="group relative" key={src}>
-            <img
-              width={1280}
-              height={720}
-              style={{ objectPosition: "100% center", willChange: "transform" }}
-              className="aspect-[5/7] w-[80vmin] object-cover sm:w-[40vmin]"
-              src={src}
-              alt={alt}
-              draggable="false"
-              loading="lazy"
-            />
-            <div className="absolute inset-x-0 grid place-items-center opacity-0 duration-1000 ease-in-out group-hover:opacity-100">
-              <h3 className="text-nowrap">{alt}</h3>
-            </div>
-          </div>
+          <ImageSlide key={src} src={src} alt={alt} />
         ))}
       </div>
     </div>
   );
+}
+
+function ImageSlide({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="group relative" key={src}>
+      <img
+        width={1280}
+        height={720}
+        style={{ objectPosition: "100% center", willChange: "transform" }}
+        className="aspect-[5/7] w-[80vmin] object-cover sm:w-[40vmin]"
+        src={src}
+        alt={alt}
+        draggable="false"
+        loading="lazy"
+      />
+      <div className="absolute inset-x-0 grid place-items-center opacity-0 duration-1000 ease-in-out group-hover:opacity-100">
+        <h3 className="text-nowrap">{alt}</h3>
+      </div>
+    </div>
+  )
 }
 
 export default Slideshow;
