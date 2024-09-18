@@ -1,50 +1,102 @@
-# React + TypeScript + Vite
+# Personal Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal website! This is a React-based web application that showcases information about me, my interests, projects, and more.
 
-Currently, two official plugins are available:
+![img](./.readme/page.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Personal Website](#personal-website)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [Usage](#usage)
+    - [Development Server](#development-server)
+    - [Building for Production](#building-for-production)
+    - [Preview Production Build](#preview-production-build)
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Responsive Design**: Optimized for all device sizes.
+- **Modern UI**: Clean and intuitive user interface.
+- **Dynamic Content**: Interactive components built with React.
+- **Performance Optimizations**: Images and assets are optimized for faster load times.
+
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: Adds static typing to JavaScript, enhancing code quality.
+- **Vite**: A fast development build tool.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **ESLint**: A tool for identifying and fixing linting errors.
+- **PostCSS & Autoprefixer**: For processing CSS and adding vendor prefixes.
+- **Sharp & SVGO**: For image optimization.
+- **Fonts**:
+  - [Cinzel Variable](https://fonts.google.com/specimen/Cinzel)
+  - [Anonymous Pro](https://fonts.google.com/specimen/Anonymous+Pro)
+- **Icons**: Using `react-icons` for scalable vector icons.
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed on your system:
+
+- **Node.js** (v14 or later)
+- **npm** (v6 or later)
+
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/samuelmevik/personal-website.git
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd personal-website
+   ```
+
+3. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+### Development Server
+
+To start the development server with hot reloading:
+
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Open your browser and navigate to `http://localhost:5173` to view the website.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Building for Production
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+To build the application for production:
+
+```bash
+npm run build
 ```
+
+The optimized files will be in the `dist` folder.
+
+### Preview Production Build
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+Thank you for taking the time to view my project!
