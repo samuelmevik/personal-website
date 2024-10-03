@@ -39,12 +39,11 @@ function Slideshow({ className }: { className?: string }) {
     onTouchMove,
   } = useSlideshow(trackRef);
 
-
   return (
     <div
       style={{ willChange: "transform" }}
       className={twMerge(
-        "absolute top-1/2 left-1/2 -translate-y-1/2",
+        "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
         className
       )}
       onMouseDown={(e) => onMouseDown(e.clientX)}
@@ -74,7 +73,7 @@ function ImageSlide({ src, alt }: { src: string; alt: string }) {
       <img
         width={1280}
         height={720}
-        style={{ objectPosition: "100% center", willChange: "transform" }}
+        style={{ objectPosition: "50% center", willChange: "transform" }}
         className="aspect-[5/7] w-[80vmin] object-cover sm:w-[40vmin]"
         src={src}
         alt={alt}

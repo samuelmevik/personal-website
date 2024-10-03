@@ -41,9 +41,15 @@ function animateTrack(track: HTMLDivElement, nextPercentage: number) {
 function animateImages(images: HTMLImageElement[]) {
   for (const image of images) {
     const { right, left } = image.getBoundingClientRect();
+    /*
     if (right < 0 || left > window.innerWidth) {
       continue; // Skip images not in viewport
+    }*/
+
+    if (right < -image.width || left > window.innerWidth + image.width) {
+      continue; // Skip images not in viewport
     }
+
     updateImageObjectPosition(image);
   }
 }
@@ -78,6 +84,7 @@ function useSlideshow(trackRef: React.RefObject<HTMLDivElement>) {
         resizeRAFId = null;
       });
     };
+    handleResize();
 
     window.addEventListener("resize", handleResize);
     return () => {
@@ -97,8 +104,8 @@ function useSlideshow(trackRef: React.RefObject<HTMLDivElement>) {
     const maxDelta = curr.clientWidth / 2;
     const percentage = (delta / maxDelta) * -100;
     return Math.max(
-      Math.min(prevSlide.current + percentage, 0),
-      -100
+      Math.min(prevSlide.current + percentage, 50),
+      -50
     );
   }
 
