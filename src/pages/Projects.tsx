@@ -54,16 +54,11 @@ function Projects() {
         <Grid.Item className="!translate-x-0">
           <Experience title="My Coding Habits">
             <p>
-              While I have a solid foundation in backend development and enjoy
-              working with technologies like Docker and Kubernetes, I also
-              strongly like creating engaging and responsive user interfaces.
+              While I have a solid foundation in backend development and genuinely enjoy working with technologies like Docker and Kubernetes to build robust and scalable systems, I also have a strong passion for creating engaging and responsive user interfaces. 
             </p>
             <p>
-              I’ve been diving deep into front-end development, focusing on
-              tools like TailwindCSS and React to build sleek, dynamic user
-              experiences. I love the challenge of combining design with
-              functionality to make sites that not only look great but are also
-              intuitive.
+            Kubernetes' orchestration and automation capabilities particularly fascinate me, as they offer application management at scale.
+            Lately, I've been diving deep into front-end development, focusing on tools like TailwindCSS and React to build sleek, dynamic user experiences. I love the challenge of combining design with functionality to create sites that look great and intuitive.
             </p>
             <p>
               Make sure to click on the Github-cat to check out a repository!
