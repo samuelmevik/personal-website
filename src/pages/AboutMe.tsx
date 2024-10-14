@@ -39,7 +39,7 @@ function AboutMe() {
           </LetterGroup>
         </SentenceGroup>
       </TitleWrapper>
-      <div className="grid px-[4vmin] md:grid-cols-2 lg:gap-[4vmin]">
+      <div className="reveal grid px-[4vmin] md:grid-cols-2 lg:gap-[4vmin]">
         <div className="grid place-items-center">
           <div
             style={{ borderRadius: "30% 60% 70% 40% / 50% 60% 30%" }}
