@@ -4,11 +4,10 @@ import SentenceGroup from "../components/ui/text/SentenceGroup";
 import profile from "../assets/profile_medium.webp";
 import Experience from "../components/ui/Experience";
 import TitleWrapper from "../components/TitleWrapper";
-import Grid from "../components/ui/Grid";
 
 function AboutMe() {
   return (
-    <PageWrapper id="me" className="grid">
+    <PageWrapper id="me">
       <TitleWrapper>
         <h2>Learn</h2>
         <SentenceGroup className="inline-flex w-fit flex-wrap">
@@ -40,22 +39,23 @@ function AboutMe() {
           </LetterGroup>
         </SentenceGroup>
       </TitleWrapper>
-      <Grid>
-        <Grid.Item className="!aspect-square p-[2vmin] md:!w-[max(45vmin,30rem)] md:!translate-x-[min(33%,10vw)]">
+      <div className="grid px-[4vmin] md:grid-cols-2 lg:gap-[4vmin]">
+        <div className="grid place-items-center">
           <div
             style={{ borderRadius: "30% 60% 70% 40% / 50% 60% 30%" }}
-            className="mx-auto aspect-square h-full animate-blob overflow-hidden bg-transparent"
+            className="aspect-square max-h-[45vmin] animate-blob overflow-hidden bg-transparent"
           >
             <img
               width={568}
               height={568}
               src={profile}
               alt="Me in nature"
-              className="size-full -scale-x-100 object-cover"
+              className="size-full object-cover"
             />
           </div>
-        </Grid.Item>
-        <Grid.Item className="!-translate-y-[10vh] md:!-translate-x-[min(33%,10vw)]">
+        </div>
+
+        <div className="lg:w-3/4">
           <Experience title="Hello!">
             <p>
               My name is Samuel Mevik, and I am passionate about many things,
@@ -82,8 +82,8 @@ function AboutMe() {
               let’s just say it’s a constantly evolving passion.
             </p>
           </Experience>
-        </Grid.Item>
-      </Grid>
+        </div>
+      </div>
     </PageWrapper>
   );
 }
