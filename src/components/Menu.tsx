@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { FaCamera, FaCode, FaHome } from "react-icons/fa";
 import { FaFilePen } from "react-icons/fa6";
 import { GrWorkshop } from "react-icons/gr";

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { RefObject, useCallback, useEffect, useRef } from "react";
 
 /**
  * Calculates the object position percentage based on the image's position in the viewport.
@@ -54,7 +54,7 @@ function animateImages(images: HTMLImageElement[]) {
   }
 }
 
-function useSlideshow(trackRef: React.RefObject<HTMLDivElement>) {
+function useSlideshow(trackRef: RefObject<HTMLDivElement | null>) {
   const mouseDownAt = useRef(0);
   const prevSlide = useRef(0);
   const slide = useRef(0);
@@ -68,7 +68,6 @@ function useSlideshow(trackRef: React.RefObject<HTMLDivElement>) {
       images.current = [...track.querySelectorAll("img")];
     }
   }, [trackRef]);
-
 
   /**
    * Handles window resize events to animate images accordingly.
@@ -95,7 +94,6 @@ function useSlideshow(trackRef: React.RefObject<HTMLDivElement>) {
     };
   }, [trackRef, slide]);
 
-
   /**
    * Calculates the next percentage of the slide based on the mouse position.
    */
@@ -103,12 +101,8 @@ function useSlideshow(trackRef: React.RefObject<HTMLDivElement>) {
     const delta = mouseDownAt.current - latestClientX.current;
     const maxDelta = curr.clientWidth / 2;
     const percentage = (delta / maxDelta) * -100;
-    return Math.max(
-      Math.min(prevSlide.current + percentage, 50),
-      -50
-    );
+    return Math.max(Math.min(prevSlide.current + percentage, 50), -50);
   }
-
 
   const onMouseUp = useCallback(() => {
     mouseDownAt.current = 0;
@@ -170,7 +164,6 @@ function useSlideshow(trackRef: React.RefObject<HTMLDivElement>) {
     onMouseMove: onMove,
     onTouchMove: onMove,
   };
-};
+}
 
 export default useSlideshow;
-

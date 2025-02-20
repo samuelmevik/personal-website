@@ -84,7 +84,7 @@ function ImageSlide({ src, alt }: { src: string; alt: string }) {
         <h3 className="text-nowrap">{alt}</h3>
       </div>
     </div>
-  )
+  );
 }
 
 export default Slideshow;
