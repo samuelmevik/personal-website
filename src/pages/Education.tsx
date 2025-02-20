@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/classnames-order */
 import PageWrapper from "../components/PageWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import Experience from "../components/ui/Experience";
