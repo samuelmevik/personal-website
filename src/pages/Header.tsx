@@ -231,7 +231,7 @@ function Column({
   className?: string;
 }) {
   const animate =
-    direction === "up" ? "animate-scroll_up" : "animate-scroll_down";
+    direction === "up" ? "animate-scroll-up" : "animate-scroll-down";
   return (
     <div className={`col-span-1 overflow-hidden ${className}`}>
       <div className={`grid ${animate} h-max gap-[2vmin]`}>
