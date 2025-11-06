@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useEffect, useRef } from "react";
+import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
 /**
  * Calculates the object position percentage based on the image's position in the viewport.
@@ -61,6 +61,10 @@ function useSlideshow(trackRef: RefObject<HTMLDivElement | null>) {
   const rAFId = useRef<number | null>(null);
   const latestClientX = useRef<number>(0);
   const images = useRef<HTMLImageElement[]>([]);
+  const [isDragging, setIsDragging] = useState(false)
+  const [direction, setDirection] = useState(-1);
+  const cycleDurationMs = 100000; // time to go from 50 -> -50 in ms
+  const speedPercentPerMs = 100 / cycleDurationMs; // percent per ms
 
   useEffect(() => {
     const track = trackRef.current;
@@ -105,6 +109,7 @@ function useSlideshow(trackRef: RefObject<HTMLDivElement | null>) {
   }
 
   const onMouseUp = useCallback(() => {
+    setIsDragging(false)
     mouseDownAt.current = 0;
     prevSlide.current = slide.current;
   }, []);
@@ -134,18 +139,18 @@ function useSlideshow(trackRef: RefObject<HTMLDivElement | null>) {
   const handlePointerMove = useCallback(
     (clientX: number) => {
       latestClientX.current = clientX;
-      if (rAFId.current === null) {
-        rAFId.current = requestAnimationFrame(updateSlideshow);
-      }
+      rAFId.current ??= requestAnimationFrame(updateSlideshow);
     },
     [updateSlideshow]
   );
 
   const onMouseDown = useCallback((clientX: number) => {
+    setIsDragging(true)
     mouseDownAt.current = clientX;
   }, []);
 
   const onTouchStart = useCallback((clientX: number) => {
+    setIsDragging(true)
     mouseDownAt.current = clientX;
   }, []);
 
@@ -155,6 +160,57 @@ function useSlideshow(trackRef: RefObject<HTMLDivElement | null>) {
     },
     [handlePointerMove]
   );
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    let lastFrameTime: number | null = null;
+    let rAFId: number | null = null;
+
+    function frame(ts: number) {
+      if (!track) { return }
+      if (isDragging) {
+        lastFrameTime = null;
+        rAFId = requestAnimationFrame(frame);
+        return;
+      }
+
+      if (lastFrameTime === null) {
+        lastFrameTime = ts;
+        rAFId = requestAnimationFrame(frame);
+        return;
+      }
+
+      const delta = ts - lastFrameTime;
+      lastFrameTime = ts;
+
+      let next = slide.current + direction * speedPercentPerMs * delta;
+
+      // Reverse direction at the ends
+      if (next <= -50) {
+        next = -50;
+        setDirection(1)
+      } else if (next >= 50) {
+        next = 50;
+        setDirection(-1)
+      }
+
+      slide.current = next;
+      prevSlide.current = next;
+
+      animateTrack(track, next);
+      animateImages(images.current);
+
+      rAFId = requestAnimationFrame(frame);
+    }
+
+    rAFId = requestAnimationFrame(frame);
+
+    return () => {
+      if (rAFId) cancelAnimationFrame(rAFId);
+      lastFrameTime = null;
+    };
+  }, [trackRef, isDragging, direction, speedPercentPerMs]);
 
   return {
     onMouseUp,
