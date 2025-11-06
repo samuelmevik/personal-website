@@ -67,7 +67,7 @@ function Slideshow({ className }: { className?: string }) {
   );
 }
 
-function ImageSlide({ src, alt }: { src: string; alt: string }) {
+function ImageSlide({ src, alt }: Readonly<{ src: string; alt: string }>) {
   return (
     <div className="group relative" key={src}>
       <img

@@ -76,12 +76,12 @@ function NavItem({
   open,
   icon,
   href,
-}: {
+}: Readonly<{
   index: number;
   open: boolean;
   icon: JSX.Element;
   href: string;
-}) {
+}>) {
   return (
     <div
       style={{
