@@ -7,7 +7,7 @@ function Footer() {
           → LinkedIn
         </a>
       </p>
-      <p className='transition-opacity hover:opacity-50'>Samuel Mevik © 2024</p>
+      <p className='transition-opacity hover:opacity-50'>Samuel Mevik © {new Date().getFullYear()}</p>
     </div>
 
   </footer>)
