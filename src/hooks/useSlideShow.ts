@@ -39,15 +39,14 @@ function animateTrack(track: HTMLDivElement, nextPercentage: number) {
  * Animates the positions of all visible images.
  */
 function animateImages(images: HTMLImageElement[]) {
-  for (const image of images) {
-    const { right, left } = image.getBoundingClientRect();
-    /*
-    if (right < 0 || left > window.innerWidth) {
-      continue; // Skip images not in viewport
-    }*/
+  const viewportWidth = window.innerWidth;
 
-    if (right < -image.width || left > window.innerWidth + image.width) {
-      continue; // Skip images not in viewport
+  for (const image of images) {
+    const rect = image.getBoundingClientRect();
+    const { left, right, width } = rect;
+
+    if (right < -width || left > viewportWidth + width) {
+      continue;
     }
 
     updateImageObjectPosition(image);
