@@ -1,7 +1,6 @@
-import Education from "./pages/Education";
 import Footer from "./components/Footer";
 import Header from "./pages/Header";
-import WorkExperience from "./pages/WorkExperience";
+import MyExperience from "./pages/MyExperience";
 import { useRef } from "react";
 import SnippetsFromMyLife from "./pages/SnippetsFromMyLife";
 import ThemeToggler from "./components/ui/ThemeToggler";
@@ -26,8 +25,7 @@ function App() {
       <Header />
       <AboutMe />
       <SnippetsFromMyLife />
-      <WorkExperience />
-      <Education />
+      <MyExperience />
       <Projects />
       <Footer />
     </div>

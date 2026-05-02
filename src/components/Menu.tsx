@@ -1,6 +1,5 @@
 import { JSX, useState } from "react";
 import { FaCamera, FaCode, FaHome } from "react-icons/fa";
-import { FaFilePen } from "react-icons/fa6";
 import { GrWorkshop } from "react-icons/gr";
 import { IoMdPerson } from "react-icons/io";
 import { LuPlus } from "react-icons/lu";
@@ -20,11 +19,7 @@ const menuOptions = [
   },
   {
     icon: <GrWorkshop />,
-    href: "work",
-  },
-  {
-    icon: <FaFilePen />,
-    href: "education",
+    href: "experience",
   },
   {
     icon: <FaCode />,
