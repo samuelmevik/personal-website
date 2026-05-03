@@ -74,15 +74,24 @@ function ImageSlide({ src, alt }: Readonly<{ src: string; alt: string }>) {
         width={1280}
         height={720}
         style={{ objectPosition: "50% center", willChange: "transform" }}
-        className="aspect-[5/7] w-[80vmin] object-cover sm:w-[40vmin]"
+        className="aspect-[5/7] w-[78vmin] object-cover sm:w-[44vmin] lg:w-[36vmin]"
         src={src}
         alt={alt}
         draggable="false"
         loading="lazy"
       />
-      <div className="absolute inset-x-0 grid place-items-center opacity-0 duration-1000 ease-in-out group-hover:opacity-100">
-        <h3 className="text-nowrap">{alt}</h3>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between gap-4 px-4 py-3 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100">
+        <span
+          className="eyebrow text-white drop-shadow"
+          style={{ fontSize: "0.6rem" }}
+        >
+          {alt}
+        </span>
       </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+      />
     </div>
   );
 }

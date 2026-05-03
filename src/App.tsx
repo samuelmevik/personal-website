@@ -18,15 +18,20 @@ function App() {
   return (
     <div
       ref={ref}
-      className="bg-white transition-colors duration-500 dark:bg-black dark:text-white lg:pb-[10vmin]"
+      className="bg-[var(--bg)] text-[var(--fg)] transition-colors duration-500"
     >
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <ThemeToggler />
       <Menu />
-      <Header />
-      <AboutMe />
-      <SnippetsFromMyLife />
-      <MyExperience />
-      <Projects />
+      <main id="main">
+        <Header />
+        <AboutMe />
+        <SnippetsFromMyLife />
+        <MyExperience />
+        <Projects />
+      </main>
       <Footer />
     </div>
   );

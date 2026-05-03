@@ -1,8 +1,16 @@
 import { twMerge } from "tailwind-merge";
 
-function SentenceGroup({ children, className, props }: { children: React.ReactNode, className?: string, props? : React.HTMLAttributes<HTMLDivElement> }) {
+function SentenceGroup({
+  children,
+  className,
+  props,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  props?: React.HTMLAttributes<HTMLDivElement>;
+}) {
   return (
-    <h1 className={twMerge("group", className)} {...props}>
+    <h1 data-title className={twMerge("group", className)} {...props}>
       {children}
     </h1>
   );

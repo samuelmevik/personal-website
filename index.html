@@ -9,6 +9,18 @@
     <meta name="keywords" content="Web Development, HTML, CSS, Tailwind, JavaScript, Typescript, Java, Docker, Kubernetes, React, Node.js, Full Stack Developer, Responsive Design, User Experience, Portfolio, Web Programmer">
     <meta name="author" content="Samuel Mevik">
     <title>Samuel Mevik</title>
+    <script>
+      // Apply theme pre-paint to avoid flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem('darkTheme');
+          var dark = stored !== null
+            ? stored === 'true'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

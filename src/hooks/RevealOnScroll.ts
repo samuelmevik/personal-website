@@ -1,29 +1,32 @@
 import { useEffect, RefObject } from "react";
 
-function useRevealOnScroll(ref: RefObject<HTMLDivElement | null>) {
+function useRevealOnScroll(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
-    function animate() {
-      if (ref.current) {
-        const reveals = ref.current.querySelectorAll(".reveal");
-        reveals.forEach((element) => {
-          const windowHeight = window.innerHeight;
-          const elementTop = element.getBoundingClientRect().top;
-          const elementVisible = 100;
+    const root = ref.current;
+    if (!root) return;
 
-          if (elementTop < windowHeight - elementVisible) {
-            element.classList.add("active");
-          } else {
-            element.classList.remove("active");
-          }
-        });
-      }
+    const targets = root.querySelectorAll<HTMLElement>(".reveal, [data-title]");
+
+    if (typeof IntersectionObserver === "undefined") {
+      targets.forEach((el) => el.classList.add("in-view"));
+      return;
     }
 
-    window.addEventListener("scroll", animate, { passive: true });
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            obs.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+    );
 
-    return () => {
-      window.removeEventListener("scroll", animate);
-    };
+    targets.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
   }, [ref]);
 }
 
