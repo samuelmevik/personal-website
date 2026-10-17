@@ -1,5 +1,5 @@
 import { JSX, useEffect, useState } from "react";
-import { FaCamera, FaCode, FaHome } from "react-icons/fa";
+import { FaCamera, FaCode, FaEnvelope, FaHome } from "react-icons/fa";
 import { GrWorkshop } from "react-icons/gr";
 import { IoMdPerson } from "react-icons/io";
 import { LuPlus } from "react-icons/lu";
@@ -10,6 +10,7 @@ const menuOptions = [
   { icon: <FaCamera />, href: "album", label: "Album" },
   { icon: <GrWorkshop />, href: "experience", label: "Experience" },
   { icon: <FaCode />, href: "projects", label: "Projects" },
+  { icon: <FaEnvelope />, href: "contact", label: "Contact" },
 ];
 
 const squareSize = "size-[calc(40vmin+8rem)]";
@@ -39,7 +40,10 @@ function Menu() {
     const footer = document.querySelector("footer");
     if (!footer || typeof IntersectionObserver === "undefined") return;
     const observer = new IntersectionObserver(
-      ([entry]) => setHidden(entry.isIntersecting),
+      ([entry]) => {
+        setHidden(entry.isIntersecting);
+        if (entry.isIntersecting) setOpen(false);
+      },
       { threshold: 0.1 }
     );
     observer.observe(footer);
@@ -52,10 +56,9 @@ function Menu() {
 
   return (
     <div
-      className={`z-50 text-white dark:text-black ${squareSize} fixed inset-x-0 bottom-0 m-auto ${translateMenuY} pointer-events-none transition-opacity duration-300 ${
-        hidden ? "opacity-0" : "opacity-100"
+      className={`z-50 text-paper ${squareSize} fixed inset-x-0 bottom-0 m-auto ${translateMenuY} pointer-events-none transition-[opacity,visibility] duration-300 ${
+        hidden ? "invisible opacity-0" : "opacity-100"
       }`}
-      aria-hidden={hidden}
     >
       <nav
         aria-label="Primary"
@@ -65,13 +68,13 @@ function Menu() {
         <div className="absolute grid size-full place-items-center">
           <button
             onClick={toggle}
-            className={`pointer-events-auto z-50 grid ${toggleSize} place-items-center rounded-full bg-black dark:bg-white shadow-lg`}
+            className={`pointer-events-auto z-50 grid ${toggleSize} place-items-center rounded-full bg-ink outline-offset-2 ring-2 ring-paper`}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="primary-nav"
           >
             <LuPlus
-              className={`size-full transition-transform duration-300 ${
+              className={`size-[70%] transition-transform duration-300 ${
                 open ? "rotate-[315deg]" : ""
               }`}
               aria-hidden="true"
@@ -79,7 +82,13 @@ function Menu() {
           </button>
         </div>
         {menuOptions.map((option, index) => (
-          <NavItem key={option.href} open={open} index={index} {...option} />
+          <NavItem
+            key={option.href}
+            open={open}
+            index={index}
+            onNavigate={() => setOpen(false)}
+            {...option}
+          />
         ))}
       </nav>
     </div>
@@ -92,12 +101,14 @@ function NavItem({
   icon,
   href,
   label,
+  onNavigate,
 }: Readonly<{
   index: number;
   open: boolean;
   icon: JSX.Element;
   href: string;
   label: string;
+  onNavigate: () => void;
 }>) {
   const angleOpen = (degree / (menuOptions.length - 1)) * index;
   const angleClose = 0;
@@ -124,17 +135,17 @@ function NavItem({
           href={`#${href}`}
           tabIndex={open ? 0 : -1}
           aria-label={label}
-          className={`${refSize} pointer-events-auto peer grid place-items-center rounded-full bg-black p-[calc(0.5vmin+0.5rem)] *:size-full dark:bg-white shadow-md transition-opacity duration-200 ${
+          onClick={onNavigate}
+          className={`${refSize} pointer-events-auto peer grid place-items-center rounded-full bg-ink p-[calc(0.5vmin+0.55rem)] ring-2 ring-paper *:size-full transition-opacity duration-200 ${
             open ? "opacity-100" : "opacity-0"
           }`}
         >
           {icon}
         </a>
         <span
-          className={`absolute inset-x-0 mx-auto text-center text-black dark:text-white transition-opacity duration-300 pointer-events-none whitespace-nowrap ${
-            open ? "opacity-80 peer-hover:opacity-100" : "opacity-0"
+          className={`absolute inset-x-0 mx-auto mt-1.5 w-max bg-paper px-1.5 text-center text-sm text-ink transition-opacity duration-300 pointer-events-none ${
+            open ? "opacity-100" : "opacity-0"
           }`}
-          style={{ fontSize: "0.75rem", letterSpacing: "0.1em" }}
         >
           {label}
         </span>

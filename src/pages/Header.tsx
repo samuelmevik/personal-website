@@ -1,235 +1,182 @@
+import { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
 import PageWrapper from "../components/PageWrapper";
-import LetterGroup from "../components/ui/text/LetterGroup";
-import SentenceGroup from "../components/ui/text/SentenceGroup";
+import ScatterText from "../components/ScatterText";
+import useMediaQuery from "../hooks/useMediaQuery";
 
-import img1L from "../assets/header/large/1_crop.jpg";
-import img1S from "../assets/header/small/1_crop.jpg";
+import sarekLarge from "../assets/header/large/1_crop.jpg";
+import sarekSmall from "../assets/header/small/1_crop.jpg";
+import elephantLarge from "../assets/header/large/2_crop.jpg";
+import elephantSmall from "../assets/header/small/2_crop.jpg";
+import catLarge from "../assets/header/large/3_crop.jpg";
+import catSmall from "../assets/header/small/6_crop.jpg";
+import rainbowLarge from "../assets/header/large/4_crop.jpg";
+import rainbowSmall from "../assets/header/small/4_crop.jpg";
+import flamingosLarge from "../assets/header/large/5_crop.jpg";
+import flamingosSmall from "../assets/header/small/11_crop.jpg";
+import signLarge from "../assets/header/large/6_crop.jpg";
+import signSmall from "../assets/header/small/3_crop.jpg";
+import lighthouseLarge from "../assets/header/large/7_crop.jpg";
+import lighthouseSmall from "../assets/header/small/7_crop.jpg";
+import canoeLarge from "../assets/header/large/8_crop.jpg";
+import canoeSmall from "../assets/header/small/8_crop.jpg";
+import statueLarge from "../assets/header/large/9_crop.jpg";
+import statueSmall from "../assets/header/small/9_crop.jpg";
+import tajMahalLarge from "../assets/header/large/10_crop.jpg";
+import tajMahalSmall from "../assets/header/small/10_crop.jpg";
+import cliffLarge from "../assets/header/large/11_crop.jpg";
+import cliffSmall from "../assets/header/small/5_crop.jpg";
+import beeLarge from "../assets/header/large/12_crop.jpg";
+import beeSmall from "../assets/header/small/12_crop.jpg";
 
-import img2L from "../assets/header/large/2_crop.jpg";
-import img2S from "../assets/header/small/2_crop.jpg";
+interface Photo {
+  large: string;
+  small: string;
+}
 
-import img3L from "../assets/header/large/3_crop.jpg";
-import img3S from "../assets/header/small/3_crop.jpg";
+interface ColumnProps {
+  direction: "up" | "down";
+  // Seconds into the loop to start from, so adjacent columns don't line up
+  offset: number;
+  className?: string;
+  photos: Photo[];
+}
 
-import img4L from "../assets/header/large/4_crop.jpg";
-import img4S from "../assets/header/small/4_crop.jpg";
-
-import img5L from "../assets/header/large/5_crop.jpg";
-import img5S from "../assets/header/small/5_crop.jpg";
-
-import img6L from "../assets/header/large/6_crop.jpg";
-import img6S from "../assets/header/small/6_crop.jpg";
-
-import img7L from "../assets/header/large/7_crop.jpg";
-import img7S from "../assets/header/small/7_crop.jpg";
-
-import img8L from "../assets/header/large/8_crop.jpg";
-import img8S from "../assets/header/small/8_crop.jpg";
-
-import img9L from "../assets/header/large/9_crop.jpg";
-import img9S from "../assets/header/small/9_crop.jpg";
-
-import img10L from "../assets/header/large/10_crop.jpg";
-import img10S from "../assets/header/small/10_crop.jpg";
-
-import img11L from "../assets/header/large/11_crop.jpg";
-import img11S from "../assets/header/small/11_crop.jpg";
-
-import img12L from "../assets/header/large/12_crop.jpg";
-import img12S from "../assets/header/small/12_crop.jpg";
+const columns: ColumnProps[] = [
+  {
+    direction: "up",
+    offset: 0,
+    className: "hidden xl:block",
+    photos: [
+      { large: sarekLarge, small: sarekSmall },
+      { large: lighthouseLarge, small: lighthouseSmall },
+      { large: flamingosLarge, small: flamingosSmall },
+      { large: signLarge, small: signSmall },
+    ],
+  },
+  {
+    direction: "down",
+    offset: -14,
+    photos: [
+      { large: rainbowLarge, small: rainbowSmall },
+      { large: tajMahalLarge, small: tajMahalSmall },
+      { large: canoeLarge, small: canoeSmall },
+      { large: catLarge, small: catSmall },
+    ],
+  },
+  {
+    direction: "up",
+    offset: -31,
+    photos: [
+      { large: beeLarge, small: beeSmall },
+      { large: statueLarge, small: statueSmall },
+      { large: elephantLarge, small: elephantSmall },
+      { large: cliffLarge, small: cliffSmall },
+    ],
+  },
+];
 
 function Header() {
+  const [fontReady, setFontReady] = useState(false);
+
+  // Hold the opening back until Cinzel has loaded, so the letters rise once in
+  // the right typeface instead of swapping halfway through.
+  useEffect(() => {
+    let active = true;
+    const reveal = () => {
+      if (active) setFontReady(true);
+    };
+    const fallback = window.setTimeout(reveal, 2500);
+    document.fonts.load('900 1em "Cinzel Variable"').then(reveal, reveal);
+    return () => {
+      active = false;
+      window.clearTimeout(fallback);
+    };
+  }, []);
+
+  const opening = fontReady ? "wake" : "pending";
+
+  // The photos only appear where they fit beside the name. Smaller screens get
+  // the name alone, and never download the photos.
+  const wide = useMediaQuery("(min-width: 64rem)");
+
   return (
     <PageWrapper
       id="home"
       bare
-      className="relative grid h-svh place-items-center overflow-hidden"
+      className="hero grid min-h-svh lg:grid-cols-[minmax(0,1fr)_40vw]"
     >
-      {/* Image grid backdrop */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 grid grid-cols-2 gap-[2vmin] px-[2vmin] [mask-image:linear-gradient(to_top,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_3%)] md:grid-cols-3"
-      >
-        <Column direction="up" className="hidden md:block">
-          <Picture large={img1L} small={img1S} loading="eager" alt="" />
-          <Picture large={img2L} small={img2S} loading="eager" alt="" />
-          <Picture large={img3L} small={img3S} alt="" />
-          <Picture large={img4L} small={img4S} alt="" />
-        </Column>
-        <Column direction="down">
-          <Picture large={img5L} small={img5S} loading="eager" alt="" />
-          <Picture large={img6L} small={img6S} loading="eager" alt="" />
-          <Picture large={img7L} small={img7S} loading="eager" alt="" />
-          <Picture large={img8L} small={img8S} loading="eager" alt="" />
-        </Column>
-        <Column direction="up">
-          <Picture large={img9L} small={img9S} loading="eager" alt="" />
-          <Picture large={img10L} small={img10S} loading="eager" alt="" />
-          <Picture large={img11L} small={img11S} alt="" />
-          <Picture large={img12L} small={img12S} alt="" />
-        </Column>
+      <div className="edge-x flex flex-col justify-center py-[min(6rem,10svh)] lg:py-28">
+        <ScatterText
+          as="h1"
+          text="Samuel Mevik"
+          className={twMerge("hero-name w-fit", opening)}
+          wordClassName="block w-fit uppercase"
+        />
+        <div className="mt-[clamp(1.75rem,4svh,3rem)] flex max-w-[44ch] flex-col gap-3">
+          <p className="font-display text-[1.3125rem] leading-tight font-bold">
+            Developer &amp; codecrafter
+          </p>
+          <p>
+            I write software at Vivicta in Sweden, mostly for the web, and take
+            my camera wherever I travel.
+          </p>
+        </div>
       </div>
 
-      {/* Soft vignette so the title reads cleanly over the imagery */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--bg)_0%,_transparent_55%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-white/35 dark:bg-black/45"
-      />
-
-      {/* Top meta strip */}
-      <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-[var(--edge)] pt-[clamp(1.25rem,4vmin,2.25rem)]">
-        <span className="eyebrow">Samuel Mevik · Portfolio</span>
-        <span className="eyebrow hidden sm:block">Sweden · 2026</span>
-      </div>
-
-      {/* Centered title */}
-      <div className="relative z-10 flex flex-col items-center gap-[clamp(1rem,3vmin,2rem)] px-[var(--edge)] text-center">
-        <span className="reveal flex items-center gap-3 text-current/70">
-          <span aria-hidden="true" className="block h-px w-8 bg-current/40" />
-          <span className="eyebrow">Web Developer & Code-Crafter</span>
-          <span aria-hidden="true" className="block h-px w-8 bg-current/40" />
-        </span>
-
-        <SentenceGroup
-          className="mx-auto max-w-[14ch]"
-          props={{ style: { fontSize: "clamp(3rem, 11vw, 11rem)" } }}
-        >
-          <LetterGroup>
-            <span className="group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[4deg] group-hover/sentence:translate-x-[-80%]">
-              S
-            </span>
-            <span className="transform group-hover/sentence:translate-x-[-40%] group-hover/sentence:translate-y-[20%] group-hover/sentence:-rotate-6">
-              A
-            </span>
-            <span className="transform group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg]">
-              M
-            </span>
-            <span className="transform group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg]">
-              U
-            </span>
-            <span className="transform group-hover/sentence:translate-y-[20%] group-hover/sentence:-rotate-3">
-              E
-            </span>
-            <span className="transform group-hover/sentence:translate-y-[-40%] group-hover/sentence:rotate-[-5deg]">
-              L
-            </span>
-            <span>&nbsp;</span>
-            <span className="transform group-hover/sentence:translate-y-1/2 group-hover/sentence:rotate-[8deg]">
-              M
-            </span>
-            <span className="transform group-hover/sentence:translate-y-[15%] group-hover/sentence:-rotate-6">
-              E
-            </span>
-            <span className="transform group-hover/sentence:translate-x-1/2 group-hover/sentence:translate-y-[-10%] group-hover/sentence:-rotate-3">
-              V
-            </span>
-            <span className="transform group-hover/sentence:translate-x-[120%] group-hover/sentence:translate-y-[-30%] group-hover/sentence:rotate-[-10deg]">
-              I
-            </span>
-            <span className="transform group-hover/sentence:translate-x-[120%] group-hover/sentence:translate-y-[-30%] group-hover/sentence:rotate-[-10deg]">
-              K
-            </span>
-          </LetterGroup>
-        </SentenceGroup>
-
-        <p className="reveal max-w-[40ch] text-balance opacity-70">
-          I build web experiences that pair solid architecture with interfaces
-          that feel good to touch.
-        </p>
-
-        <a
-          href="#me"
-          className="reveal mt-[clamp(0.5rem,2vmin,1.25rem)] inline-flex items-center gap-2 border border-current/30 px-5 py-2.5 transition hover:border-current hover:bg-current hover:text-[var(--bg)]"
-          style={{ fontSize: "0.7rem", letterSpacing: "0.25em" }}
-        >
-          <span className="uppercase">Enter</span>
-          <span aria-hidden="true">↓</span>
-        </a>
-      </div>
-
-      {/* Bottom scroll cue */}
-      <a
-        href="#me"
-        aria-label="Scroll to next section"
-        className="group absolute inset-x-0 bottom-[4vmin] z-20 mx-auto flex w-fit flex-col items-center gap-1 text-current/70 hover:text-current"
-      >
-        <span className="eyebrow" style={{ fontSize: "0.55rem" }}>
-          Scroll
-        </span>
-        <span
+      {wide && (
+        <div
           aria-hidden="true"
-          className="block animate-scroll-hint"
-          style={{ fontSize: "1rem", lineHeight: 1 }}
+          className={twMerge("hero-photos relative overflow-hidden", opening)}
         >
-          ↓
-        </span>
-      </a>
+          <div className="absolute inset-0 grid grid-cols-2 gap-[var(--gap)] xl:grid-cols-3">
+            {columns.map((column, i) => (
+              <Column key={i} {...column} />
+            ))}
+          </div>
+        </div>
+      )}
     </PageWrapper>
+  );
+}
+
+function Column({ photos, direction, offset, className }: Readonly<ColumnProps>) {
+  const animate =
+    direction === "up" ? "animate-scroll-up" : "animate-scroll-down";
+  return (
+    <div className={twMerge("overflow-hidden", className)}>
+      <div
+        className={`grid gap-[var(--gap)] ${animate}`}
+        style={{ animationDelay: `${offset}s` }}
+      >
+        {photos.map((photo, i) => (
+          <Picture key={photo.large} {...photo} eager={i < 2} />
+        ))}
+        {photos.map((photo) => (
+          <Picture key={`${photo.large}-loop`} {...photo} />
+        ))}
+      </div>
+    </div>
   );
 }
 
 function Picture({
   large,
   small,
-  alt,
-  loading = "lazy",
-  fetchpriority = "low",
-}: {
-  large: string;
-  small: string;
-  alt?: string;
-  loading?: "lazy" | "eager";
-  fetchpriority?: "high" | "low";
-}) {
+  eager = false,
+}: Readonly<Photo & { eager?: boolean }>) {
   return (
-    <picture className="aspect-[3/4]">
-      <source
-        width="360"
-        height="480"
-        media="(max-width: 768px)"
-        srcSet={small}
-      />
-      <source
-        width="800"
-        height="1067"
-        media="(min-width: 768px)"
-        srcSet={large}
-      />
-      <img
-        width="800"
-        height="1067"
-        loading={loading}
-        src={large}
-        className="w-full object-cover"
-        fetchpriority={fetchpriority}
-        alt={alt}
-      />
-    </picture>
-  );
-}
-
-function Column({
-  children,
-  direction,
-  className,
-}: {
-  children: React.ReactNode;
-  direction: "up" | "down";
-  className?: string;
-}) {
-  const animate =
-    direction === "up" ? "animate-scroll-up" : "animate-scroll-down";
-  return (
-    <div className={`col-span-1 overflow-hidden ${className}`}>
-      <div className={`grid ${animate} h-max gap-[2vmin]`}>
-        {children}
-        {children}
-      </div>
-    </div>
+    <img
+      src={large}
+      srcSet={`${small} 360w, ${large} 800w`}
+      sizes="(min-width: 80rem) 14vw, 20vw"
+      width={800}
+      height={1067}
+      alt=""
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      className="block aspect-[3/4] w-full object-cover"
+    />
   );
 }
 

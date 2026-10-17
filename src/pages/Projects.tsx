@@ -1,247 +1,173 @@
-import LetterGroup from "../components/ui/text/LetterGroup";
-import SentenceGroup from "../components/ui/text/SentenceGroup";
+import PageWrapper from "../components/PageWrapper";
+import ScatterText from "../components/ScatterText";
 import personalWebsite from "../assets/personal-website.webp";
-import patternMatcher from "../assets/pattern-matcher.webp";
 import rental from "../assets/rental-car-small.png";
 import universe from "../assets/universe.png";
-import PageWrapper from "../components/PageWrapper";
-import { SiTypescript, SiVite } from "react-icons/si";
-import { FaGithub, FaJava, FaReact, FaUpRightFromSquare } from "react-icons/fa6";
-import { RiTailwindCssFill } from "react-icons/ri";
-import TitleWrapper from "../components/TitleWrapper";
 
-interface TechTagProps {
-  icon: React.ReactNode;
-  label: string;
-}
-
-function TechTag({ icon, label }: Readonly<TechTagProps>) {
+function Screenshot({
+  src,
+  alt,
+  width,
+  height,
+  position = "center",
+}: Readonly<{
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  position?: string;
+}>) {
   return (
-    <span
-      className="inline-flex items-center gap-1.5 border border-current/20 px-2 py-1 uppercase tracking-[0.18em] opacity-70 transition-opacity hover:opacity-100"
-      style={{ fontSize: "0.55rem" }}
-    >
-      <span className="text-[0.85rem] leading-none">{icon}</span>
-      {label}
-    </span>
+    <div className="aspect-[16/10] overflow-hidden border border-rule">
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        style={{ objectPosition: position }}
+        className="size-full object-cover"
+      />
+    </div>
   );
 }
 
-interface ProjectCardProps {
-  title: string;
-  image?: string;
-  imageAlt?: string;
-  githubLink?: string;
-  tags?: TechTagProps[];
-  placeholder?: boolean;
-  children: React.ReactNode;
+// The pattern-matcher example, set as text rather than a picture of text.
+function PatternMatcherSample() {
+  return (
+    <div className="grid aspect-[16/10] place-items-center overflow-x-auto bg-ink px-6 text-paper">
+      <pre className="text-[clamp(0.8rem,0.7rem+0.5vw,1rem)] leading-relaxed">
+        <code>
+          <b>return</b> patternMatch(res)({"\n"}
+          {"  "}when({"\n"}
+          {"    "}{"{ statusCode: inRange(200, 299) }"},{"\n"}
+          {"    "}() =&gt; res.body{"\n"}
+          {"  "}),{"\n"}
+          {"  "}otherWise(() =&gt; {"{}"}){"\n"}
+          )
+        </code>
+      </pre>
+    </div>
+  );
 }
 
-function ProjectCard({
+function Project({
   title,
-  image,
-  imageAlt,
-  githubLink,
-  tags,
-  placeholder = false,
+  artifact,
+  stack,
+  repository,
   children,
-}: Readonly<ProjectCardProps>) {
+}: Readonly<{
+  title: string;
+  artifact: React.ReactNode;
+  stack: string[];
+  repository: string;
+  children: React.ReactNode;
+}>) {
   return (
-    <article
-      className={`reveal group flex h-full flex-col border transition-all duration-500 ease-out ${
-        placeholder
-        ? "border-dashed border-current/20 opacity-40"
-        : "border-current/[0.12] hover:border-current/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
-      }`}
-    >
-      <div className="relative overflow-hidden">
-        {image ? (
-          <img
-            src={image}
-            alt={imageAlt}
-            loading="lazy"
-            className="block aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-          />
-        ) : (
-            <div className="aspect-[16/10] w-full bg-[linear-gradient(135deg,rgba(0,0,0,0.04)_25%,transparent_25%,transparent_50%,rgba(0,0,0,0.04)_50%,rgba(0,0,0,0.04)_75%,transparent_75%)] bg-[length:18px_18px] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.05)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.05)_50%,rgba(255,255,255,0.05)_75%,transparent_75%)]" />
-        )}
-      </div>
-      <div className="flex flex-1 flex-col gap-3 p-5 md:p-6">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="leading-tight">{title}</h3>
-          {githubLink && (
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${title} on GitHub`}
-              className="flex shrink-0 items-center gap-1.5 border border-current/25 px-2 py-1.5 transition-colors hover:border-current hover:bg-[var(--fg)] hover:text-[var(--bg)]"
-              style={{ fontSize: "0.6rem" }}
-            >
-              <FaGithub className="text-[0.85rem]" aria-hidden="true" />
-              <FaUpRightFromSquare className="text-[0.65rem]" aria-hidden="true" />
-            </a>
-          )}
-        </div>
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {tags.map((tag) => (
-              <TechTag key={tag.label} {...tag} />
-            ))}
-          </div>
-        )}
-        <div className="opacity-75">{children}</div>
-      </div>
+    <article className="flex flex-col">
+      {artifact}
+      <h3 className="entry-title mt-6">{title}</h3>
+      <div className="mt-3 max-w-[52ch]">{children}</div>
+      <p className="caption mt-3">{stack.join(", ")}</p>
+      <a
+        href={repository}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="link mt-4 w-fit"
+      >
+        View the code on GitHub
+        <span className="sr-only"> (opens in a new tab)</span>
+      </a>
     </article>
   );
 }
 
-const webStack: TechTagProps[] = [
-  { icon: <SiTypescript />, label: "TypeScript" },
-  { icon: <FaReact />, label: "React" },
-  { icon: <RiTailwindCssFill />, label: "Tailwind" },
-  { icon: <SiVite />, label: "Vite" },
-];
-
-function FeatureProject() {
-  return (
-    <article className="reveal group grid gap-0 border border-current/[0.12] transition-all duration-500 ease-out hover:border-current/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.45)] md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
-      <div className="relative overflow-hidden">
-        <img
-          src={personalWebsite}
-          alt="This website"
-          loading="lazy"
-          className="block aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] md:aspect-auto md:h-full"
-        />
-      </div>
-      <div className="flex flex-col justify-between gap-6 p-6 md:p-8 lg:p-10">
-        <div className="flex flex-col gap-4">
-          <span className="eyebrow">Featured · 2026</span>
-          <h3
-            className="leading-tight"
-            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)" }}
-          >
-            This Website
-          </h3>
-          <p className="opacity-75">
-            The site you’re looking at right now, built with Vite, React, Tailwind
-            and TypeScript.
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {webStack.map((tag) => (
-              <TechTag key={tag.label} {...tag} />
-            ))}
-          </div>
-        </div>
-        <a
-          href="https://github.com/samuelmevik/personal-website"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex w-fit items-center gap-2 border border-current/30 px-5 py-2.5 transition-colors hover:border-current hover:bg-[var(--fg)] hover:text-[var(--bg)]"
-          style={{ fontSize: "0.7rem", letterSpacing: "0.22em" }}
-        >
-          <FaGithub aria-hidden="true" />
-          <span className="uppercase">View Source</span>
-          <FaUpRightFromSquare aria-hidden="true" />
-        </a>
-      </div>
-    </article>
-  );
-}
+const webStack = ["TypeScript", "React", "Tailwind", "Vite"];
 
 function Projects() {
   return (
-    <PageWrapper
-      id="projects"
-      index="04"
-      className="flex flex-col gap-[clamp(2rem,6vmin,5rem)]"
-    >
-      <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <TitleWrapper eyebrow="Selected Work">
-          <SentenceGroup className="inline-flex w-fit flex-wrap">
-            <LetterGroup>
-              <span className="group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[4deg] group-hover/sentence:translate-x-[-80%]">
-                P
-              </span>
-              <span className="group-hover/sentence:translate-x-[-40%] group-hover/sentence:translate-y-[20%] group-hover/sentence:-rotate-6">
-                r
-              </span>
-              <span className="group-hover/sentence:translate-x-[-10%] group-hover/sentence:translate-y-[60%] group-hover/sentence:rotate-[-8deg]">
-                o
-              </span>
-              <span className="group-hover/sentence:translate-y-[8%] group-hover/sentence:rotate-[5deg]">
-                j
-              </span>
-              <span className="group-hover/sentence:translate-y-[20%] group-hover/sentence:-rotate-3">
-                e
-              </span>
-              <span className="group-hover/sentence:translate-y-[-40%] group-hover/sentence:rotate-[-5deg]">
-                c
-              </span>
-              <span className="group-hover/sentence:translate-y-[-30%] group-hover/sentence:rotate-[-5deg]">
-                t
-              </span>
-              <span className="group-hover/sentence:translate-y-[-20%] group-hover/sentence:rotate-[-5deg]">
-                s
-              </span>
-            </LetterGroup>
-          </SentenceGroup>
-        </TitleWrapper>
-
-        <p
-          className="reveal max-w-md opacity-65"
-          style={{ fontSize: "clamp(0.9rem, 1.1vw, 1rem)" }}
-        >
-          I enjoy working across the stack, Docker on one end, Java, React and
+    <PageWrapper id="projects">
+      <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+        <ScatterText text="Projects" className="title lg:col-span-6" />
+        <p className="max-w-[52ch] lg:col-span-5 lg:col-start-8">
+          I enjoy working across the stack: Docker on one end, Java, React and
           Tailwind on the other. What drives me is combining solid architecture
           with interfaces that feel great to use.
         </p>
       </div>
 
-      <div className="relative z-10 flex flex-col gap-[clamp(1.25rem,3vmin,2.5rem)]">
-        <FeatureProject />
+      <div className="mt-[clamp(2.5rem,6vw,5rem)] grid gap-x-[4vw] gap-y-20 md:grid-cols-2">
+        <Project
+          title="This website"
+          stack={webStack}
+          repository="https://github.com/samuelmevik/personal-website"
+          artifact={
+            <Screenshot
+              src={personalWebsite}
+              alt="The 2024 version of this site: white capitals reading Samuel Mevik, Developer & Codecrafter, on black"
+              width={1920}
+              height={1080}
+            />
+          }
+        >
+          <p>
+            The site you’re looking at, built with Vite, React, Tailwind and
+            TypeScript. The screenshot shows how it looked in 2024.
+          </p>
+        </Project>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          <ProjectCard
-            title="Pattern Matcher"
-            image={patternMatcher}
-            imageAlt="Pattern Matcher"
-            githubLink="https://github.com/samuelmevik/pattern-matcher-es"
-            tags={[{ icon: <SiTypescript />, label: "TypeScript" }]}
-          >
-            <p>
-              A TypeScript library providing declarative pattern matching, a
-              more expressive alternative to switch/if chains that matches on
-              the shape of data.
-            </p>
-          </ProjectCard>
+        <Project
+          title="Rental Car"
+          stack={webStack}
+          repository="https://github.com/samuelmevik/car-rental"
+          artifact={
+            <Screenshot
+              src={rental}
+              alt="The rental car site, with a blue SUV next to a booking prompt"
+              width={853}
+              height={480}
+            />
+          }
+        >
+          <p>
+            A frontend for browsing and booking rental cars, with a responsive,
+            modern interface.
+          </p>
+        </Project>
 
-          <ProjectCard
-            title="Rental Car"
-            image={rental}
-            imageAlt="Rental Car"
-            githubLink="https://github.com/samuelmevik/car-rental"
-            tags={webStack}
-          >
-            <p>
-              Frontend web application for browsing and booking rental cars,
-              built with a responsive, modern interface.
-            </p>
-          </ProjectCard>
+        <Project
+          title="Universe"
+          stack={["Java"]}
+          repository="https://github.com/samuelmevik/universe"
+          artifact={
+            <Screenshot
+              src={universe}
+              alt="UML class diagram of the Universe application"
+              width={940}
+              height={768}
+              position="center 20%"
+            />
+          }
+        >
+          <p>
+            A Java terminal application following MVC. Users can register and
+            manipulate celestial bodies: stars, planets and moons.
+          </p>
+        </Project>
 
-          <ProjectCard
-            title="Universe"
-            image={universe}
-            imageAlt="Universe"
-            githubLink="https://github.com/samuelmevik/universe"
-            tags={[{ icon: <FaJava />, label: "Java" }]}
-          >
-            <p>
-              A Java terminal application following MVC. Users can register and
-              manipulate celestial bodies, planets, stars, and moons.
-            </p>
-          </ProjectCard>
-        </div>
+        <Project
+          title="Pattern Matcher"
+          stack={["TypeScript"]}
+          repository="https://github.com/samuelmevik/pattern-matcher-es"
+          artifact={<PatternMatcherSample />}
+        >
+          <p>
+            A TypeScript library for declarative pattern matching: a more
+            expressive alternative to switch and if chains that matches on the
+            shape of data.
+          </p>
+        </Project>
       </div>
     </PageWrapper>
   );

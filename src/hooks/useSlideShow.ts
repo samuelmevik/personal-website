@@ -160,9 +160,27 @@ function useSlideshow(trackRef: RefObject<HTMLDivElement | null>) {
     [handlePointerMove]
   );
 
+  /**
+   * Moves the strip by roughly one photo, for keyboard users.
+   */
+  const nudge = useCallback(
+    (direction: 1 | -1) => {
+      const track = trackRef.current;
+      if (!track) return;
+      const step = 100 / Math.max(images.current.length, 1);
+      const next = Math.max(Math.min(slide.current - direction * step, 50), -50);
+      slide.current = next;
+      prevSlide.current = next;
+      animateTrack(track, next);
+      animateImages(images.current);
+    },
+    [trackRef]
+  );
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let lastFrameTime: number | null = null;
     let rAFId: number | null = null;
 
@@ -218,6 +236,7 @@ function useSlideshow(trackRef: RefObject<HTMLDivElement | null>) {
     onTouchStart,
     onMouseMove: onMove,
     onTouchMove: onMove,
+    nudge,
   };
 }
 

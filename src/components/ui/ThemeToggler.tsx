@@ -35,10 +35,10 @@ function ThemeToggler() {
   }
 
   return (
-    <div className="fixed right-0 top-0 z-50 p-[4vmin]">
+    <div className="fixed right-[var(--edge)] top-[clamp(1rem,3vw,2rem)] z-50">
       <button
         onClick={toggleTheme}
-        className="rounded-full bg-black p-3 text-white *:size-[max(3vmin,1rem)] dark:bg-white dark:text-black"
+        className="rounded-full bg-ink p-3 text-paper ring-2 ring-paper *:size-[max(2.4vmin,1rem)]"
         aria-label={darkTheme ? "Switch to light theme" : "Switch to dark theme"}
         aria-pressed={darkTheme}
         title={darkTheme ? "Switch to light theme" : "Switch to dark theme"}
